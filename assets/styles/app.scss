@@ -1,0 +1,45 @@
+@import "titres";
+@import "images";
+@import "navbar";
+@import "formulaire";
+
+:root {
+  --color-one: #D9D9D9;
+  --color-two: #000000;
+  --color-three: #FFFFFF;
+  --color-four: #005500;
+  --color-five: #8B0000;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--color-four);
+  color: var(--color-three);
+}
+
+span.name {
+  font-size: larger;
+  font-weight: bold;
+}
+
+div.text {
+  margin:auto;
+  width: 60%;
+  text-align: left;
+}
+
+p {
+  padding-left: 10px;
+}
+
+a.equipe {
+  margin-bottom: 10px;
+}
+
+span.equipe {
+  color: var(--color-three);
+  padding: 10px;
+}
