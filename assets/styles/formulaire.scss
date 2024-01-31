@@ -1,0 +1,39 @@
+div.formulaire {
+  width: 40%;
+  margin: auto;
+}
+div.label_input {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 50px 0;
+}
+
+label.label {
+  font-size: 25px;
+  font-weight: bold;
+  margin-right: auto;
+  // padding-top: 20px;
+}
+
+input.form-control {
+  width: 60%;
+  height: 40px;
+}
+
+button.btn_formulaire {
+  margin: auto;
+  background-color: var(--color-four);
+  background-image: url("../images/ball.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  font-weight: bold;
+  font-size: large;
+  color: var(--color-one);
+
+  width: 200px; /* Largeur de votre image */
+  height: 100px; /* Hauteur de votre image */
+  cursor: pointer;
+}
