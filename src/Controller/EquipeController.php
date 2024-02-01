@@ -13,15 +13,9 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/equipe')]
 class EquipeController extends AbstractController
 {
-    #[Route('/', name: 'equipes')]
+    #[Route('/', name: 'equipe')]
     public function index(Request $request): Response
     {
-        /*$equipe = new Equipe;
-        $form = $this->createForm(EquipeFormType::class, $equipe);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-
-        }*/
         return $this->render('equipe/index.html.twig');
     }
 
@@ -30,7 +24,6 @@ class EquipeController extends AbstractController
     {
         $equipes = $championnatService->getEquipes();
 
-        // Créer un tableau associatif avec les équipes et les coachs
         $equipes = [];
         foreach ($equipes as $equipe) {
             $equipesAvecCoachs[] = [
@@ -39,8 +32,7 @@ class EquipeController extends AbstractController
             ];
         }
 
-        // Envoyer le tableau des équipes avec leurs coachs à la vue
-        return $this->render('championnat/creation.html.twig', [
+        return $this->render('equipe/creation.html.twig', [
             'equipes' => $equipes,
         ]);
     }

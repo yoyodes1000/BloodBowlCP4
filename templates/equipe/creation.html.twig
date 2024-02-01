@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RaceController!{% endblock %}
+
+{% block body %}
+    <h1>Création de championnat</h1>
+    {% for equipe in equipes %}
+        <h2>{{ equipe.nom }}</h2>
+    {% endfor %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn_formulaire" type="submit">Créer</button>
+    {{ form_end(form) }}
+{% endblock %}

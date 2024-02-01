@@ -5,9 +5,6 @@ namespace App\DataFixtures;
 use App\Entity\Competence;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use function Symfony\Component\DependencyInjection\Loader\Configurator\service_locator;
-
-;
 
 class CompetenceFixtures extends Fixture
 {
@@ -82,7 +79,6 @@ class CompetenceFixtures extends Fixture
         $competence->setNom($data['nom']);
         $manager->persist($competence);
         }
-
         $manager->flush();
     }
 }

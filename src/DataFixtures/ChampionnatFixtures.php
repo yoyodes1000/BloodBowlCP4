@@ -4,7 +4,6 @@ namespace App\DataFixtures;
 
 use App\Entity\Championnat;
 use App\Entity\Equipe;
-use App\Service\ChampionnatService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 ;
@@ -13,6 +12,8 @@ class ChampionnatFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
+        $faker = \Faker\Factory::create();
+
         $championnat = new Championnat();
         $championnat->setNom("Coupe du Chaos");
         $manager->persist($championnat);
@@ -20,7 +21,7 @@ class ChampionnatFixtures extends Fixture
         $nombreEquipes = rand(8, 15);
         for ($i = 0; $i < $nombreEquipes; $i++) {
             $equipe = new Equipe();
-            $equipe->setNom("Equipe ".$i);
+            $equipe->setNom("Equipe ". $faker->realText($faker->numberBetween(10, 22)));
             $championnat->addEquipe($equipe);
             $manager->persist($equipe);
         }

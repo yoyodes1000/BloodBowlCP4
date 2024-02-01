@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Afficher {{ championnats.nom }}{% endblock %}
+
+{% block body %}
+    <h1>{{ championnats.nom }} : liste des équipes</h1>
+    <ul>
+        {% for equipe in championnats.equipes %}
+            <li>{{ equipe.nom }}</li>
+        {% endfor %}
+    </ul>
+    <div class="creer_championnat">
+        {#<a href="{{ path('creer_championnat') }}">#}
+        <button class="btn_formulaire"  type="submit">Afficher les journées</button>
+        </a>
+    </div>
+{% endblock %}

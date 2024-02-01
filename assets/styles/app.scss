@@ -49,3 +49,12 @@ span.equipe {
    width: 20vw;
    margin: 2vw;
  }
+ li.championnat a {
+   font-size: 25px;
+   color: var(--color-three);
+   text-decoration: none;
+ }
+div.creer_championnat {
+  display:flex;
+  justify-content: center;
+}
