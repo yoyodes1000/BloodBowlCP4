@@ -2,6 +2,7 @@
 @import "images";
 @import "navbar";
 @import "formulaire";
+@import "tableaux";
 
 :root {
   --color-one: #D9D9D9;
@@ -43,3 +44,8 @@ span.equipe {
   color: var(--color-three);
   padding: 10px;
 }
+ div.liste_equipe {
+   display: inline-block;
+   width: 20vw;
+   margin: 2vw;
+ }

@@ -1,0 +1,48 @@
+div.en-tete {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--color-five);
+  height: 35px;
+}
+div.joueurs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--color-one);
+  min-height: 35px;
+  color: var(--color-two)
+}
+div.nbMax {
+  width: 5%;
+}
+div.poste {
+  width: 10%;
+}
+div.mvmt {
+  width: 5%;
+}
+div.fo {
+  width: 5%;
+}
+div.ag {
+  width: 5%;
+}
+div.passe {
+  width: 5%;
+}
+div.armure {
+  width: 5%;
+}
+div.competence {
+  width: 20%;
+}
+div.principale {
+  width: 5%;
+}
+div.secondaire {
+  width: 5%;
+}
+div.bouton_joueurs {
+  width: 5%;
+}
