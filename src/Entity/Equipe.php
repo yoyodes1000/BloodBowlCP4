@@ -24,9 +24,13 @@ class Equipe
     #[ORM\ManyToOne(inversedBy: 'equipes')]
     private ?Race $races = null;
 
+    #[ORM\ManyToMany(targetEntity: Championnat::class, mappedBy: 'equipes')]
+    private Collection $championnats;
+
     public function __construct()
     {
         $this->joueurs = new ArrayCollection();
+        $this->championnats = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -66,6 +70,33 @@ class Equipe
     public function setRaces(?Race $races): static
     {
         $this->races = $races;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Championnat>
+     */
+    public function getChampionnats(): Collection
+    {
+        return $this->championnats;
+    }
+
+    public function addChampionnat(Championnat $championnat): static
+    {
+        if (!$this->championnats->contains($championnat)) {
+            $this->championnats->add($championnat);
+            $championnat->addEquipe($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChampionnat(Championnat $championnat): static
+    {
+        if ($this->championnats->removeElement($championnat)) {
+            $championnat->removeEquipe($this);
+        }
 
         return $this;
     }

@@ -3,13 +3,12 @@
 {% block title %}Hello RaceController!{% endblock %}
 
 {% block body %}
-    <h1>Est ce que ca marche ?</h1>
-    {% for race in equipe.races %}
-        <h2>{{ race.nom }}</h2>
-        <ul>
-            {% for equipe in race.equipes %}
-                <li>{{ equipe.nom }}</li>
-            {% endfor %}
-        </ul>
+    <h1>Création de championnat</h1>
+    {% for equipe in equipes %}
+        <h2>{{ equipe.nom }}</h2>
     {% endfor %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit">Add category</button>
+    {{ form_end(form) }}
 {% endblock %}
