@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\RaceRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: RaceRepository::class)]
@@ -31,11 +33,16 @@ class Race
     #[ORM\Column]
     private ?int $assistant = null;
 
-    #[ORM\ManyToOne(inversedBy: 'races')]
-    private ?Equipe $equipes = null;
+    #[ORM\OneToMany(mappedBy: 'races', targetEntity: Equipe::class)]
+    private Collection $equipes;
 
     #[ORM\ManyToOne(inversedBy: 'races')]
     private ?Joueur $joueurs = null;
+
+    public function __construct()
+    {
+        $this->equipes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -114,14 +121,32 @@ class Race
         return $this;
     }
 
-    public function getEquipes(): ?Equipe
+    /**
+     * @return Collection<int, Equipe>
+     */
+    public function getEquipes(): Collection
     {
         return $this->equipes;
     }
 
-    public function setEquipes(?Equipe $equipes): static
+    public function addEquipe(Equipe $equipe): static
     {
-        $this->equipes = $equipes;
+        if (!$this->equipes->contains($equipe)) {
+            $this->equipes->add($equipe);
+            $equipe->setRaces($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEquipe(Equipe $equipe): static
+    {
+        if ($this->equipes->removeElement($equipe)) {
+            // set the owning side to null (unless already changed)
+            if ($equipe->getRaces() === $this) {
+                $equipe->setRaces(null);
+            }
+        }
 
         return $this;
     }

@@ -191,6 +191,7 @@ class RaceFixtures extends Fixture
             $race->setCheerleader($data['cheerleader']);
             $race->setAssistant($data['assistant']);
             $manager->persist($race);
+            $this->addReference('Race_' . $data['nom'], $race);
         }
 
         $manager->flush();

@@ -139,6 +139,7 @@ class UserFixtures extends Fixture
             );
             $user->setPassword($hashedPassword);
             $manager->persist($user);
+            $this->addReference('Coach_' . $data['email'], $user);
         }
 
         $manager->flush();
