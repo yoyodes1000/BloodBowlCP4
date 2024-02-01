@@ -3,5 +3,13 @@
 {% block title %}Hello RaceController!{% endblock %}
 
 {% block body %}
-    <h1>ca marche??</h1>
+    <h1>Ma liste d'équipes</h1>
+    {% for race in races %}
+        <h2>{{ race.nom }}</h2>
+        <ul>
+            {% for equipe in race.equipes %}
+                <li>{{ equipe.nom }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
 {% endblock %}

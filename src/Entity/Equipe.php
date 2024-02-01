@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EquipeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: EquipeRepository::class)]
@@ -21,6 +23,11 @@ class Equipe
 
     #[ORM\ManyToOne(inversedBy: 'equipes')]
     private ?Race $races = null;
+
+    public function __construct()
+    {
+        $this->joueurs = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {

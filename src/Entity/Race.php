@@ -36,12 +36,13 @@ class Race
     #[ORM\OneToMany(mappedBy: 'races', targetEntity: Equipe::class)]
     private Collection $equipes;
 
-    #[ORM\ManyToOne(inversedBy: 'races')]
-    private ?Joueur $joueurs = null;
+    #[ORM\OneToMany(mappedBy: 'Races', targetEntity: Joueur::class)]
+    private Collection $joueurs;
 
     public function __construct()
     {
         $this->equipes = new ArrayCollection();
+        $this->joueurs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -151,14 +152,32 @@ class Race
         return $this;
     }
 
-    public function getJoueurs(): ?Joueur
+    /**
+     * @return Collection<int, Joueur>
+     */
+    public function getJoueurs(): Collection
     {
         return $this->joueurs;
     }
 
-    public function setJoueurs(?Joueur $joueurs): static
+    public function addJoueur(Joueur $joueur): static
     {
-        $this->joueurs = $joueurs;
+        if (!$this->joueurs->contains($joueur)) {
+            $this->joueurs->add($joueur);
+            $joueur->setRaces($this);
+        }
+
+        return $this;
+    }
+
+    public function removeJoueur(Joueur $joueur): static
+    {
+        if ($this->joueurs->removeElement($joueur)) {
+            // set the owning side to null (unless already changed)
+            if ($joueur->getRaces() === $this) {
+                $joueur->setRaces(null);
+            }
+        }
 
         return $this;
     }

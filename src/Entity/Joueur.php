@@ -46,16 +46,11 @@ class Joueur
     #[ORM\Column(length: 255)]
     private ?string $secondaire = null;
 
-    #[ORM\OneToMany(mappedBy: 'joueurs', targetEntity: Race::class)]
-    private Collection $races;
-
     #[ORM\Column(type: Types::TEXT)]
     private ?string $comp = null;
 
-    public function __construct()
-    {
-        $this->races = new ArrayCollection();
-    }
+    #[ORM\ManyToOne(inversedBy: 'joueurs')]
+    private ?Race $Races = null;
 
     public function getId(): ?int
     {
@@ -182,36 +177,6 @@ class Joueur
         return $this;
     }
 
-    /**
-     * @return Collection<int, Race>
-     */
-    public function getRaces(): Collection
-    {
-        return $this->races;
-    }
-
-    public function addRace(Race $race): static
-    {
-        if (!$this->races->contains($race)) {
-            $this->races->add($race);
-            $race->setJoueurs($this);
-        }
-
-        return $this;
-    }
-
-    public function removeRace(Race $race): static
-    {
-        if ($this->races->removeElement($race)) {
-            // set the owning side to null (unless already changed)
-            if ($race->getJoueurs() === $this) {
-                $race->setJoueurs(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getComp(): ?string
     {
         return $this->comp;
@@ -220,6 +185,18 @@ class Joueur
     public function setComp(string $comp): static
     {
         $this->comp = $comp;
+
+        return $this;
+    }
+
+    public function getRaces(): ?Race
+    {
+        return $this->Races;
+    }
+
+    public function setRaces(?Race $Races): static
+    {
+        $this->Races = $Races;
 
         return $this;
     }

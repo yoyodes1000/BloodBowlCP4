@@ -3,13 +3,8 @@
 {% block title %}Création d'équipes{% endblock %}
 
 {% block body %}
-    <h1>Est ce que ca marche ?</h1>
+    <h1>Quelle équipe voulez vous créer?</h1>
     {% for race in races %}
         <h2>{{ race.nom }}</h2>
-        <ul>
-            {% for joueur in race.joueurs %}
-                <li>{{ joueur.poste }}</li>
-            {% endfor %}
-        </ul>
     {% endfor %}
 {% endblock %}

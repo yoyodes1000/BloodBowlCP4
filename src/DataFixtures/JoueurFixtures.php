@@ -4,10 +4,11 @@ namespace App\DataFixtures;
 
 use App\Entity\Joueur;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 ;
 
-class JoueurFixtures extends Fixture
+class JoueurFixtures extends Fixture implements DependentFixtureInterface
 {
     public const JOUEURS = [
         // Orques Noirs
@@ -23,7 +24,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Esquive, Poids plume, Minus, Crâne épais',
             'principale' => 'A',
             'secondaire' => 'GPF',
-            'joueurs' => 1
+            'race' => 'Orques Noirs'
         ],
         [
             'nb_max' => 6,
@@ -37,7 +38,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Bagarreur, Projection',
             'principale' => 'GF',
             'secondaire' => 'AP',
-            'joueurs' => 1
+            'race' => 'Orques Noirs'
         ],
         [
             'nb_max' => 1,
@@ -51,7 +52,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Toujours Affamé, Solitaire (3+), Gerbe de Vomi, Châtaigne (+1), Gros Débile, Régénération, Lancer de coéquipier',
             'principale' => 'F',
             'secondaire' => 'AGP',
-            'joueurs' => 1
+            'race' => 'Orques Noirs'
         ],
         // Elus du chaos
         [
@@ -66,7 +67,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Cornes',
             'principale' => 'GMF',
             'secondaire' => 'AP',
-            'joueurs' => 2
+            'race' => 'Elus du Chaos'
         ],
         [
             'nb_max' => 4,
@@ -80,7 +81,7 @@ class JoueurFixtures extends Fixture
             'competences' => '',
             'principale' => 'GMF',
             'secondaire' => 'A',
-            'joueurs' => 2
+            'race' => 'Elus du Chaos'
         ],
         [
             'nb_max' => 1,
@@ -94,7 +95,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Toujours Affamé, Solitaire (4+), Gerbe de Vomi, Châtaigne (+1), Gros Débile, Régénération, Lancer de coéquipier',
             'principale' => 'MF',
             'secondaire' => 'AG',
-            'joueurs' => 2
+            'race' => 'Elus du Chaos'
         ],
         [
             'nb_max' => 1,
@@ -108,7 +109,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Cerveau Lent, Crâne Epais, Solitaire (4+), Châtaigne (+1), Lancer de coéquipier',
             'principale' => 'MF',
             'secondaire' => 'AG',
-            'joueurs' => 2
+            'race' => 'Elus du Chaos'
         ],
         [
             'nb_max' => 1,
@@ -122,7 +123,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Solitaire (4+), Frénésie, Cornes, Châtaigne (+1), Crâne Epais, Fureur Débridée',
             'principale' => 'MF',
             'secondaire' => 'AG',
-            'joueurs' => 2
+            'race' => 'Elus du Chaos'
         ],
         // Renegats du chaos
         [
@@ -137,7 +138,7 @@ class JoueurFixtures extends Fixture
             'competences' => '',
             'principale' => 'GM',
             'secondaire' => 'AF',
-            'joueurs' => 3
+            'race' => 'Renégats du Chaos'
         ],
         [
             'nb_max' => 1,
@@ -151,7 +152,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Animosité(tous coéquipiers), Passe, Libération Controlée',
             'principale' => 'GMP',
             'secondaire' => 'AF',
-            'joueurs' => 3
+            'race' => 'Renégats du Chaos'
         ],
         [
             'nb_max' => 1,
@@ -165,7 +166,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Animosité(tous coéquipiers), Esquive, Poids Plume, Minus',
             'principale' => 'AM',
             'secondaire' => 'GP',
-            'joueurs' => 3
+            'race' => 'Renégats du Chaos'
         ],
         [
             'nb_max' => 1,
@@ -179,7 +180,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Animosité(tous coéquipiers)',
             'principale' => 'GM',
             'secondaire' => 'AF',
-            'joueurs' => 3
+            'race' => 'Renégats du Chaos'
         ],
         [
             'nb_max' => 1,
@@ -193,7 +194,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Animosité(tous coéquipiers)',
             'principale' => 'GM',
             'secondaire' => 'AF',
-            'joueurs' => 3
+            'race' => 'Renégats du Chaos'
         ],
         [
             'nb_max' => 1,
@@ -207,7 +208,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Animosité(tous coéquipiers)',
             'principale' => 'AGM',
             'secondaire' => 'PF',
-            'joueurs' => 3
+            'race' => 'Renégats du Chaos'
         ],
         [
             'nb_max' => 1,
@@ -221,7 +222,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Châtaigne (+1), Gerbe de vomi, Gros Débile, Lancer de Coéquipier, Régénération, Solitaire (4+), Toujours Affamé',
             'principale' => 'F',
             'secondaire' => 'AGM',
-            'joueurs' => 3
+            'race' => 'Renégats du Chaos'
         ],
         [
             'nb_max' => 1,
@@ -235,7 +236,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Cerveau Lent, Solitaire (4+), Châtaigne (+1), Crâne Epais, Lancer de Coéquipier',
             'principale' => 'F',
             'secondaire' => 'AGM',
-            'joueurs' => 3
+            'race' => 'Renégats du Chaos'
         ],
         [
             'nb_max' => 1,
@@ -249,7 +250,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Solitaire (4+), Frénésie, Cornes, Châtaigne (+1), Crâne Epais, Fureur Débridée',
             'principale' => 'F',
             'secondaire' => 'GAM',
-            'joueurs' => 3
+            'race' => 'Renégats du Chaos'
         ],
         [
             'nb_max' => 1,
@@ -263,7 +264,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Sauvagerie Animale, Frénésie, Solitaire (4+), Châtaigne (+1), Queue Préhensile',
             'principale' => 'F',
             'secondaire' => 'GAM',
-            'joueurs' => 3
+            'race' => 'Renégats du Chaos'
         ],
         // Elfes Noirs
         [
@@ -278,7 +279,7 @@ class JoueurFixtures extends Fixture
             'competences' => '',
             'principale' => 'AG',
             'secondaire' => 'F',
-            'joueurs' => 4,
+            'race' => 'Elfes Noirs',
         ],
         [
             'nb_max' => 2,
@@ -292,7 +293,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Délestage',
             'principale' => 'AGP',
             'secondaire' => 'F',
-            'joueurs' => 4,
+            'race' => 'Elfes Noirs',
         ],
         [
             'nb_max' => 4,
@@ -306,7 +307,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Blocage',
             'principale' => 'AG',
             'secondaire' => 'PF',
-            'joueurs' => 4,
+            'race' => 'Elfes Noirs',
         ],
         [
             'nb_max' => 2,
@@ -320,7 +321,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Poursuite, Poignards',
             'principale' => 'AG',
             'secondaire' => 'PF',
-            'joueurs' => 4,
+            'race' => 'Elfes Noirs',
         ],
         [
             'nb_max' => 2,
@@ -334,7 +335,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Esquive, Frénésie, Rétablissement',
             'principale' => 'AG',
             'secondaire' => 'PF',
-            'joueurs' => 4,
+            'race' => 'Elfes Noirs',
         ],
         // Nains
         [
@@ -349,7 +350,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Blocage, Tacle, Crâne Epais',
             'principale' => 'GF',
             'secondaire' => 'A',
-            'joueurs' => 5,
+            'race' => 'Nains',
         ],
         [
             'nb_max' => 2,
@@ -363,7 +364,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Prise Sure, Crâne Epais',
             'principale' => 'GP',
             'secondaire' => 'AF',
-            'joueurs' => 5,
+            'race' => 'Nains',
         ],
         [
             'nb_max' => 2,
@@ -377,7 +378,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Blocage, Crâne Epais',
             'principale' => 'GF',
             'secondaire' => 'AP',
-            'joueurs' => 5,
+            'race' => 'Nains',
         ],
         [
             'nb_max' => 2,
@@ -391,7 +392,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Blocage, Intrépidité, Frénésie, Crâne Epais',
             'principale' => 'GF',
             'secondaire' => 'A',
-            'joueurs' => 5,
+            'race' => 'Nains',
         ],
         [
             'nb_max' => 2,
@@ -405,7 +406,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Esquive en Force, Joeur Déloyal (+2), Juggernaut, Solitaire (5+), Châtaigne (+1), Sans les Mains, Arme Secrète, Stabilité',
             'principale' => 'F',
             'secondaire' => 'AG',
-            'joueurs' => 5,
+            'race' => 'Nains',
         ],
         // Union Elfique
         [
@@ -420,7 +421,7 @@ class JoueurFixtures extends Fixture
             'competences' => '',
             'principale' => 'AG',
             'secondaire' => 'F',
-            'joueurs' => 6,
+            'race' => 'Union Elfique',
         ],
         [
             'nb_max' => 2,
@@ -434,7 +435,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Passe',
             'principale' => 'AGP',
             'secondaire' => 'F',
-            'joueurs' => 6,
+            'race' => 'Union Elfique',
         ],
         [
             'nb_max' => 4,
@@ -448,7 +449,7 @@ class JoueurFixtures extends Fixture
             'competences' => "Réception, Nerfs d'Acier",
             'principale' => 'AG',
             'secondaire' => 'F',
-            'joueurs' => 6,
+            'race' => 'Union Elfique',
         ],
         [
             'nb_max' => 4,
@@ -462,7 +463,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Blocage, Glissade Controlée',
             'principale' => 'AG',
             'secondaire' => 'PF',
-            'joueurs' => 6,
+            'race' => 'Union Elfique',
         ],
         // Gobelins
         [
@@ -477,7 +478,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Esquive, Poids Plume, Minus',
             'principale' => 'A',
             'secondaire' => 'GPF',
-            'joueurs' => 7,
+            'race' => 'Gobelins',
         ],
         [
             'nb_max' => 1,
@@ -491,7 +492,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Bombardier, Esquive, Arme Secrète, Minus',
             'principale' => 'A',
             'secondaire' => 'GPF',
-            'joueurs' => 7,
+            'race' => 'Gobelins',
         ],
         [
             'nb_max' => 1,
@@ -505,7 +506,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Tronçonneuse, Arme Secrète, Minus',
             'principale' => 'A',
             'secondaire' => 'GF',
-            'joueurs' => 7,
+            'race' => 'Gobelins',
         ],
         [
             'nb_max' => 1,
@@ -519,7 +520,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Chaîne et Boulet, Sans les Mains, Arme Secrète, Minus',
             'principale' => 'F',
             'secondaire' => 'AG',
-            'joueurs' => 7,
+            'race' => 'Gobelins',
         ],
         [
             'nb_max' => 1,
@@ -533,7 +534,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Esquive, Echasse à Ressort, Minus',
             'principale' => 'A',
             'secondaire' => 'GPF',
-            'joueurs' => 7,
+            'race' => 'Gobelins',
         ],
         [
             'nb_max' => 1,
@@ -547,7 +548,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Présence Perturbante, Esquive, Poids Plume, Minus',
             'principale' => 'A',
             'secondaire' => 'GPF',
-            'joueurs' => 7,
+            'race' => 'Gobelins',
         ],
         [
             'nb_max' => 1,
@@ -561,7 +562,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Poids Plume, Minus, Piqué',
             'principale' => 'A',
             'secondaire' => 'GF',
-            'joueurs' => 7,
+            'race' => 'Gobelins',
         ],
         [
             'nb_max' => 2,
@@ -575,7 +576,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Toujours Affamé, Gros Débile, Solitaire (3+), Châtaigne (+1), Lancer de Coéquipier, Gerbe de Vomi, Régénération',
             'principale' => 'F',
             'secondaire' => 'AGP',
-            'joueurs' => 7,
+            'race' => 'Gobelins',
         ],
         // Halflings
         [
@@ -590,7 +591,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Esquive, Poids Plume, Minus',
             'principale' => 'A',
             'secondaire' => 'GF',
-            'joueurs' => 8,
+            'race' =>'Halflings',
         ],
         [
             'nb_max' => 2,
@@ -604,7 +605,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Esquive, Parade, Minus',
             'principale' => 'AP',
             'secondaire' => 'GF',
-            'joueurs' => 8,
+            'race' => 'Halflings',
         ],
         [
             'nb_max' => 2,
@@ -618,7 +619,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Réception, Esquive, Poids Plume, Sprint, Minus',
             'principale' => 'A',
             'secondaire' => 'GF',
-            'joueurs' => 8,
+            'race' => 'Halflings',
         ],
         [
             'nb_max' => 2,
@@ -632,7 +633,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Châtaigne (+1), Stabilité, Bras Musclé, Prendre Racine, Crâne Epais, Lancer de Coéquipier, Timmm-ber',
             'principale' => 'AP',
             'secondaire' => 'GF',
-            'joueurs' => 8,
+            'race' => 'Halflings',
         ],
         // Humains
         [
@@ -647,7 +648,7 @@ class JoueurFixtures extends Fixture
             'competences' => '',
             'principale' => 'G',
             'secondaire' => 'AF',
-            'joueurs' => 9,
+            'race' => 'Humain',
         ],
         [
             'nb_max' => 2,
@@ -661,7 +662,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Passe, Prise Sûre',
             'principale' => 'GP',
             'secondaire' => 'AF',
-            'joueurs' => 9,
+            'race' => 'Humain',
         ],
         [
             'nb_max' => 4,
@@ -675,7 +676,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Réception, Esquive',
             'principale' => 'AG',
             'secondaire' => 'FP',
-            'joueurs' => 9,
+            'race' => 'Humain',
         ],
         [
             'nb_max' => 4,
@@ -689,7 +690,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Blocage',
             'principale' => 'GF',
             'secondaire' => 'AP',
-            'joueurs' => 9,
+            'race' => 'Humain',
         ],
         [
             'nb_max' => 3,
@@ -703,7 +704,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Esquive, Poids Plume, Minus',
             'principale' => 'A',
             'secondaire' => 'GF',
-            'joueurs' => 9,
+            'race' => 'Humain',
         ],
         [
             'nb_max' => 1,
@@ -717,7 +718,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Cerveau Lent, Solitaire (4+), Châtaigne (+1), Lancer de Coéquipier, Crâne Epais',
             'principale' => 'F',
             'secondaire' => 'AG',
-            'joueurs' => 9,
+            'race' => 'Humain',
         ],
         // Noblesse Impériale
         [
@@ -732,7 +733,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Parade',
             'principale' => 'G',
             'secondaire' => 'AF',
-            'joueurs' => 10,
+            'race' => 'Noblesse Impériale',
         ],
         [
             'nb_max' => 2,
@@ -746,7 +747,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Passe, Passe dans la Course',
             'principale' => 'GP',
             'secondaire' => 'AF',
-            'joueurs' => 10,
+            'race' => 'Noblesse Impériale',
         ],
         [
             'nb_max' => 2,
@@ -760,7 +761,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Blocage, Réception',
             'principale' => 'AG',
             'secondaire' => 'PF',
-            'joueurs' => 10,
+            'race' => 'Noblesse Impériale',
         ],
         [
             'nb_max' => 4,
@@ -774,7 +775,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Stabilité, Lutte',
             'principale' => 'GF',
             'secondaire' => 'A',
-            'joueurs' => 10,
+            'race' => 'Noblesse Impériale',
         ],
         [
             'nb_max' => 1,
@@ -788,7 +789,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Cerveau Lent, Solitaire (4+), Châtaigne (+1), Lancer de Coéquipier, Crâne Epais',
             'principale' => 'F',
             'secondaire' => 'AG',
-            'joueurs' => 10,
+            'race' => 'Noblesse Impériale',
         ],
         // Hommes-Lezards
         [
@@ -803,7 +804,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Esquive, Minus',
             'principale' => 'A',
             'secondaire' => 'GPF',
-            'joueurs' => 11,
+            'race' => 'Hommes Lézards',
         ],
         [
             'nb_max' => 2,
@@ -817,7 +818,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Esquive, Sur le Ballon, Poursuite, Minus',
             'principale' => 'A',
             'secondaire' => 'GPF',
-            'joueurs' => 11,
+            'race' => 'Hommes Lézards',
         ],
         [
             'nb_max' => 6,
@@ -831,7 +832,7 @@ class JoueurFixtures extends Fixture
             'competences' => '',
             'principale' => 'GF',
             'secondaire' => 'A',
-            'joueurs' => 11,
+            'race' => 'Hommes Lézards',
         ],
         [
             'nb_max' => 1,
@@ -845,7 +846,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Cerveau Lent, Crâne Epais, Solitaire (4+), Châtaigne (+1), Queue Préhensile',
             'principale' => 'F',
             'secondaire' => 'AG',
-            'joueurs' => 11,
+            'race' => 'Hommes Lézards',
         ],
         // Horreus Nécromantiques
         [
@@ -860,7 +861,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Régénération',
             'principale' => 'G',
             'secondaire' => 'AF',
-            'joueurs' => 12,
+            'race' => 'Horreur Necromantiques',
         ],
         [
             'nb_max' => 2,
@@ -874,7 +875,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Esquive',
             'principale' => 'AG',
             'secondaire' => 'PF',
-            'joueurs' => 12,
+            'race' => 'Horreur Necromantiques',
         ],
         [
             'nb_max' => 2,
@@ -888,7 +889,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Blocage, Répulsion, Sans les Mains, Régénération, Glissade Controlée',
             'principale' => 'GF',
             'secondaire' => 'A',
-            'joueurs' => 12,
+            'race' => 'Horreur Necromantiques',
         ],
         [
             'nb_max' => 2,
@@ -902,7 +903,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Griffes, Frénésie, Régénération',
             'principale' => 'AG',
             'secondaire' => 'PF',
-            'joueurs' => 12,
+            'race' => 'Horreur Necromantiques',
         ],
         [
             'nb_max' => 2,
@@ -916,7 +917,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Régénération, Stabilité, Crâne Epais',
             'principale' => 'GF',
             'secondaire' => 'A',
-            'joueurs' => 12,
+            'race' => 'Horreur Necromantiques',
         ],
         // Nurgle
         [
@@ -931,7 +932,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Décomposition, Contagieux',
             'principale' => 'GM',
             'secondaire' => 'AF',
-            'joueurs' => 13,
+            'race' => 'Nurgle',
         ],
         [
             'nb_max' => 4,
@@ -945,7 +946,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Cornes, Contagieux, Régénération',
             'principale' => 'GMF',
             'secondaire' => 'AP',
-            'joueurs' => 13,
+            'race' => 'Nurgle',
         ],
         [
             'nb_max' => 4,
@@ -959,7 +960,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Présence Perturbante, Répulsion, Contagieux, Régénération',
             'principale' => 'GMF',
             'secondaire' => 'A',
-            'joueurs' => 13,
+            'race' => 'Nurgle',
         ],
         [
             'nb_max' => 1,
@@ -973,7 +974,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Présence Perturbante, Répulsion, Solitaire (4+), Châtaigne (+1), Contagieux, Gros Débile, Régénération, Tentacules',
             'principale' => 'F',
             'secondaire' => 'AGM',
-            'joueurs' => 13,
+            'race' => 'Nurgle',
         ],
         // Ogres
         [
@@ -988,7 +989,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Esquive, Poids Plume, Minus, Glissade Controlée, Microbe',
             'principale' => 'A',
             'secondaire' => 'G',
-            'joueurs' => 14,
+            'race' => 'Ogres',
         ],
         [
             'nb_max' => 1,
@@ -1002,7 +1003,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Cerveau Lent, Châtaigne (+1), Botter de coéquipier, Crâne Epais',
             'principale' => 'PF',
             'secondaire' => 'AG',
-            'joueurs' => 14,
+            'race' => 'Ogres',
         ],
         [
             'nb_max' => 5,
@@ -1016,7 +1017,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Cerveau Lent, Châtaigne (+1), Lancer de coéquipier, Crâne Epais',
             'principale' => 'F',
             'secondaire' => 'AGP',
-            'joueurs' => 14,
+            'race' => 'Ogres',
         ],
         // Alliance du vieux Monde
         [
@@ -1031,7 +1032,7 @@ class JoueurFixtures extends Fixture
             'competences' => '',
             'principale' => 'G',
             'secondaire' => 'AF',
-            'joueurs' => 15,
+            'race' => 'Alliance du Vieux Monde',
         ],
         [
             'nb_max' => 1,
@@ -1045,7 +1046,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Animosité (tous coéquipier Dwarf ou Halfling), Passe, Prise Sûre',
             'principale' => 'GP',
             'secondaire' => 'AF',
-            'joueurs' => 15,
+            'race' => 'Alliance du Vieux Monde',
         ],
         [
             'nb_max' => 1,
@@ -1059,7 +1060,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Animosité (tous coéquipier Dwarf ou Halfling), Réception, Esquive',
             'principale' => 'AG',
             'secondaire' => 'F',
-            'joueurs' => 15,
+            'race' => 'Alliance du Vieux Monde',
         ],
         [
             'nb_max' => 1,
@@ -1073,7 +1074,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Animosité (tous coéquipier Dwarf ou Halfling), Blocage',
             'principale' => 'GF',
             'secondaire' => 'A',
-            'joueurs' => 15,
+            'race' => 'Alliance du Vieux Monde',
         ],
         [
             'nb_max' => 2,
@@ -1087,7 +1088,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Clé de Bras, Bagarreur, Solitaire (3+), Crâne Epais',
             'principale' => 'GF',
             'secondaire' => 'A',
-            'joueurs' => 15,
+            'race' => 'Alliance du Vieux Monde',
         ],
         [
             'nb_max' => 1,
@@ -1101,7 +1102,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Solitaire (3+), Prise Sûre, Crâne Epais',
             'principale' => 'GP',
             'secondaire' => 'AF',
-            'joueurs' => 15,
+            'race' => 'Alliance du Vieux Monde',
         ],
         [
             'nb_max' => 1,
@@ -1115,7 +1116,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Blocage, Solitaire (3+), Crâne Epais',
             'principale' => 'GF',
             'secondaire' => 'A',
-            'joueurs' => 15,
+            'race' => 'Alliance du Vieux Monde',
         ],
         [
             'nb_max' => 1,
@@ -1129,7 +1130,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Blocage, Intrépide, Frénésie, Solitaire (3+), Crâne Epais',
             'principale' => 'GF',
             'secondaire' => 'A',
-            'joueurs' => 15,
+            'race' => 'Alliance du Vieux Monde',
         ],
         [
             'nb_max' => 1,
@@ -1143,7 +1144,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Animosité (tous coéquipier Dwarf ou Humain), Minus, Esquive, Poids Plume',
             'principale' => 'GF',
             'secondaire' => 'A',
-            'joueurs' => 15,
+            'race' => 'Alliance du Vieux Monde',
         ],
         [
             'nb_max' => 1,
@@ -1157,7 +1158,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Cerveau Lent, Solitaire (4+), Châtaigne (+1), Crâne Epais, Lancer de Coéquipier',
             'principale' => 'F',
             'secondaire' => 'AG',
-            'joueurs' => 15,
+            'race' => 'Alliance du Vieux Monde',
         ],
         [
             'nb_max' => 1,
@@ -1171,7 +1172,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Solitaire (4+), Prendre Racine, Châtaigne (+1), Stabilité, Bras Musclé, Crâne Epais, Lancer de Coéquipier, Timmm-ber',
             'principale' => 'F',
             'secondaire' => 'AGP',
-            'joueurs' => 15,
+            'race' => 'Alliance du Vieux Monde',
         ],
         // Orques
         [
@@ -1186,7 +1187,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Animosité (Orc Linemen)',
             'principale' => 'G',
             'secondaire' => 'AF',
-            'joueurs' => 16,
+            'race' => 'Orques',
         ],
         [
             'nb_max' => 2,
@@ -1200,7 +1201,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Animosité (Tous coéquipiers), Passe, Prise Sûre',
             'principale' => 'GP',
             'secondaire' => 'AF',
-            'joueurs' => 16,
+            'race' => 'Orques',
         ],
         [
             'nb_max' => 4,
@@ -1214,7 +1215,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Animosité (Tous coéquipiers), Blocage',
             'principale' => 'GF',
             'secondaire' => 'AP',
-            'joueurs' => 16,
+            'race' => 'Orques',
         ],
         [
             'nb_max' => 4,
@@ -1228,7 +1229,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Animosité (Big Un Blockers)',
             'principale' => 'GF',
             'secondaire' => 'A',
-            'joueurs' => 16,
+            'race' => 'Orques',
         ],
         [
             'nb_max' => 4,
@@ -1242,7 +1243,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Esquive, Poids Plume, Minus',
             'principale' => 'A',
             'secondaire' => 'GF',
-            'joueurs' => 16,
+            'race' => 'Orques',
         ],
         [
             'nb_max' => 1,
@@ -1256,7 +1257,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Toujours Affamé, Gerbe de Vomi, Gros Débile, Lancer de Coéquipier, Solitaire (4+), Châtaigne (+1), Régénération',
             'principale' => 'F',
             'secondaire' => 'AGP',
-            'joueurs' => 16,
+            'race' => 'Orques',
         ],
         // Morts-Vivants
         [
@@ -1271,7 +1272,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Régénération, Crâne Epais',
             'principale' => 'G',
             'secondaire' => 'AF',
-            'joueurs' => 17,
+            'race' => 'Morts-Vivants',
         ],
         [
             'nb_max' => 12,
@@ -1285,7 +1286,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Régénération',
             'principale' => 'G',
             'secondaire' => 'AF',
-            'joueurs' => 17,
+            'race' => 'Morts-Vivants',
         ],
         [
             'nb_max' => 4,
@@ -1299,7 +1300,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Esquive',
             'principale' => 'AG',
             'secondaire' => 'PF',
-            'joueurs' => 17,
+            'race' => 'Morts-Vivants',
         ],
         [
             'nb_max' => 2,
@@ -1313,7 +1314,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Blocage, Régénération',
             'principale' => 'GF',
             'secondaire' => 'AP',
-            'joueurs' => 17,
+            'race' => 'Morts-Vivants',
         ],
         [
             'nb_max' => 4,
@@ -1327,7 +1328,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Chataigne (+1), Régénération',
             'principale' => 'F',
             'secondaire' => 'AG',
-            'joueurs' => 17,
+            'race' => 'Morts-Vivants',
         ],
         // Snotlings
         [
@@ -1342,7 +1343,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Esquive, Poids Plume, Minus, Glissade Controlée, Microbe, Déferlement',
             'principale' => 'A',
             'secondaire' => 'G',
-            'joueurs' => 18,
+            'race' => 'Snotlings',
         ],
         [
             'nb_max' => 2,
@@ -1356,7 +1357,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Bombardier, Esquive, Poids Plume, Minus, Glissade Controlée, Arme Secrète',
             'principale' => 'AP',
             'secondaire' => 'G',
-            'joueurs' => 18,
+            'race' => 'Snotlings',
         ],
         [
             'nb_max' => 2,
@@ -1370,7 +1371,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Esquive, Poids Plume, Minus, Glissade Controlée, Echasse à Ressort',
             'principale' => 'A',
             'secondaire' => 'G',
-            'joueurs' => 18,
+            'race' => 'Snotlings',
         ],
         [
             'nb_max' => 2,
@@ -1384,7 +1385,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Esquive, Poids Plume, Minus, Glissade Controlée, Sprint',
             'principale' => 'A',
             'secondaire' => 'G',
-            'joueurs' => 18,
+            'race' => 'Snotlings',
         ],
         [
             'nb_max' => 2,
@@ -1398,7 +1399,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Joueur Déloyal (+1), Gros Débile, Juggernaut, Châtaigne (+1), Stabilité, Arme Secrète',
             'principale' => 'F',
             'secondaire' => 'AG',
-            'joueurs' => 18,
+            'race' => 'Snotlings',
         ],
         [
             'nb_max' => 2,
@@ -1412,7 +1413,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Toujours Affamé, Gros Débile, Solitaire (3+), Châtaigne (+1), Gerbe de Vomi, Régénération, Lancer de Coéquipier',
             'principale' => 'F',
             'secondaire' => 'AGP',
-            'joueurs' => 18,
+            'race' => 'Snotlings',
         ],
         // Skavens
         [
@@ -1427,7 +1428,7 @@ class JoueurFixtures extends Fixture
             'competences' => '',
             'principale' => 'G',
             'secondaire' => 'AMF',
-            'joueurs' => 19,
+            'race' => 'Skavens',
         ],
         [
             'nb_max' => 2,
@@ -1441,7 +1442,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Passe, Prise Sûre',
             'principale' => 'GP',
             'secondaire' => 'AMF',
-            'joueurs' => 19,
+            'race' => 'Skavens',
         ],
         [
             'nb_max' => 4,
@@ -1455,7 +1456,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Esquive',
             'principale' => 'AG',
             'secondaire' => 'MPF',
-            'joueurs' => 19,
+            'race' => 'Skavens',
         ],
         [
             'nb_max' => 2,
@@ -1469,7 +1470,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Blocage',
             'principale' => 'GF',
             'secondaire' => 'AMP',
-            'joueurs' => 19,
+            'race' => 'Skavens',
         ],
         [
             'nb_max' => 1,
@@ -1483,7 +1484,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Sauvagerie Animale, Frénésie, Solitaire (4+), Châtaigne (+1), Queue Préhensile',
             'principale' => 'F',
             'secondaire' => 'AGM',
-            'joueurs' => 19,
+            'race' => 'Skavens',
         ],
         // Bas-Fonds
         [
@@ -1498,7 +1499,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Esquive, Poids Plume, Minus',
             'principale' => 'AM',
             'secondaire' => 'GF',
-            'joueurs' => 20,
+            'race' => 'Bas-Fonds',
         ],
         [
             'nb_max' => 6,
@@ -1512,7 +1513,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Esquive, Poids Plume, Glissade Controlée, Minus, Déferlement, Microbe',
             'principale' => 'AM',
             'secondaire' => 'G',
-            'joueurs' => 20,
+            'race' => 'Bas-Fonds',
         ],
         [
             'nb_max' => 3,
@@ -1526,7 +1527,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Animosité (Underworld Goblin Linemen)',
             'principale' => 'GM',
             'secondaire' => 'AF',
-            'joueurs' => 20,
+            'race' => 'Bas-Fonds',
         ],
         [
             'nb_max' => 1,
@@ -1540,7 +1541,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Animosité (Underworld Goblin Linemen), Passe, Prise Sûre',
             'principale' => 'GMP',
             'secondaire' => 'AF',
-            'joueurs' => 20,
+            'race' => 'Bas-Fonds',
         ],
         [
             'nb_max' => 1,
@@ -1554,7 +1555,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Animosité (Underworld Goblin Linemen), Esquive',
             'principale' => 'AGM',
             'secondaire' => 'PF',
-            'joueurs' => 20,
+            'race' => 'Bas-Fonds',
         ],
         [
             'nb_max' => 1,
@@ -1568,7 +1569,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Animosité (Underworld Goblin Linemen), Blocage',
             'principale' => 'GMF',
             'secondaire' => 'AP',
-            'joueurs' => 20,
+            'race' => 'Bas-Fonds',
         ],
         [
             'nb_max' => 1,
@@ -1582,7 +1583,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Toujours Affamé, Solitaire (4+), Châtaigne (+1), Gerbe de Vomi, Gros Débile, Régénération, Lancer de Coéquipier',
             'principale' => 'MF',
             'secondaire' => 'AGP',
-            'joueurs' => 20,
+            'race' => 'Bas-Fonds',
         ],
         [
             'nb_max' => 12,
@@ -1596,7 +1597,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Sauvagerie Animale, Frénésie, Solitaire (4+), Châtaigne (+1), Queue Préhensile',
             'principale' => 'MF',
             'secondaire' => 'AG',
-            'joueurs' => 20,
+            'race' => 'Bas-Fonds',
         ],
         // Elfes Sylvains
         [
@@ -1611,7 +1612,7 @@ class JoueurFixtures extends Fixture
             'competences' => '',
             'principale' => 'AG',
             'secondaire' => 'F',
-            'joueurs' => 21,
+            'race' => 'Elfes Sylvains',
         ],
         [
             'nb_max' => 2,
@@ -1625,7 +1626,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Passe',
             'principale' => 'AGP',
             'secondaire' => 'F',
-            'joueurs' => 21,
+            'race' => 'Elfes Sylvains',
         ],
         [
             'nb_max' => 4,
@@ -1639,7 +1640,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Réception, Esquive',
             'principale' => 'AG',
             'secondaire' => 'PF',
-            'joueurs' => 21,
+            'race' => 'Elfes Sylvains',
         ],
         [
             'nb_max' => 2,
@@ -1653,7 +1654,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Blocage, Esquive, Saut',
             'principale' => 'AG',
             'secondaire' => 'PF',
-            'joueurs' => 21,
+            'race' => 'Elfes Sylvains',
         ],
         [
             'nb_max' => 1,
@@ -1667,7 +1668,7 @@ class JoueurFixtures extends Fixture
             'competences' => 'Solitaire (4+), Prendre Racine, Châtaigne (+1), Stabilité, Bras Musclé, Crâne Epais, Lancer de Coéquipier',
             'principale' => 'F',
             'secondaire' => 'AG',
-            'joueurs' => 21,
+            'race' => 'Elfes Sylvains',
         ],
     ];
     public function load(ObjectManager $manager): void
@@ -1685,9 +1686,17 @@ class JoueurFixtures extends Fixture
             $joueur->setComp($data['competences']);
             $joueur->setPrincipale($data['principale']);
             $joueur->setSecondaire($data['secondaire']);
+            $joueur->setRaces($this->getReference('Race_' . $data['race']));
             $manager->persist($joueur);
         }
 
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return [
+            RaceFixtures::class,
+        ];
     }
 }

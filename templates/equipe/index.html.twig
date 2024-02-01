@@ -1,7 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mes équipes{% endblock %}
+{% block title %}Hello RaceController!{% endblock %}
 
 {% block body %}
-    <h1>Est ce que ça marche?</h1>
+    <h1>Est ce que ca marche ?</h1>
+    {% for race in equipe.races %}
+        <h2>{{ race.nom }}</h2>
+        <ul>
+            {% for equipe in race.equipes %}
+                <li>{{ equipe.nom }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
 {% endblock %}

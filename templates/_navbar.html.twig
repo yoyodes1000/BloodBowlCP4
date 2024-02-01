@@ -14,7 +14,7 @@
 
     <div class="links" id="links">
         {% if app.user %}
-            <a href="#" class="navbar_links">Mes équipes</a>
+            <a href="{{ path('race') }}" class="navbar_links">Mes équipes</a>
             <a href="{{ path('creation') }}" class="navbar_links">Créer une équipe</a>
             <a href="#" class="navbar_links" target="_blank">Créer un championnat</a>
             <a href="{{ path('app_logout') }}"  class="navbar_links">Déconnexion</a>
