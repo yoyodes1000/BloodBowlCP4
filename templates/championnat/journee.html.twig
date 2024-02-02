@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Afficher le championnat{{ championnat.nom }}{% endblock %}
+
+{% block body %}
+    <h1>{{ championnat.nom }} : Calendrier des journées</h1>
+
+    {% for journee, matches in calendrier %}
+        <h2>Journée {{ journee }}</h2>
+        <ul>
+            {% for match in matches %}
+                <li>{{ match }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+{% endblock %}

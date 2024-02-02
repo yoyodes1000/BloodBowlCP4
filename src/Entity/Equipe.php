@@ -18,20 +18,19 @@ class Equipe
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\OneToMany(mappedBy: 'equipes', targetEntity: User::class)]
-    private Collection $users;
+    #[ORM\ManyToOne(cascade: ['persist', 'remove'], inversedBy: 'equipes')]
+    private ?User $users = null;
 
-    #[ORM\OneToMany(mappedBy: 'equipes', targetEntity: Race::class)]
-    private Collection $races;
+    #[ORM\ManyToOne(cascade: ['persist', 'remove'], inversedBy: 'equipes')]
+    private ?Race $races = null;
 
-    #[ORM\ManyToMany(targetEntity: Joueur::class, mappedBy: 'equipes')]
-    private Collection $joueurs;
+    #[ORM\ManyToMany(targetEntity: Championnat::class, mappedBy: 'equipes', cascade: ['persist', 'remove'])]
+    private Collection $championnats;
 
     public function __construct()
     {
-        $this->users = new ArrayCollection();
-        $this->races = new ArrayCollection();
         $this->joueurs = new ArrayCollection();
+        $this->championnats = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -51,91 +50,54 @@ class Equipe
         return $this;
     }
 
-    /**
-     * @return Collection<int, User>
-     */
-    public function getUsers(): Collection
+    public function getUsers(): ?User
     {
         return $this->users;
     }
 
-    public function addUser(User $user): static
+    public function setUsers(?User $users): static
     {
-        if (!$this->users->contains($user)) {
-            $this->users->add($user);
-            $user->setEquipes($this);
-        }
+        $this->users = $users;
 
         return $this;
     }
 
-    public function removeUser(User $user): static
-    {
-        if ($this->users->removeElement($user)) {
-            // set the owning side to null (unless already changed)
-            if ($user->getEquipes() === $this) {
-                $user->setEquipes(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Race>
-     */
-    public function getRaces(): Collection
+    public function getRaces(): ?Race
     {
         return $this->races;
     }
 
-    public function addRace(Race $race): static
+    public function setRaces(?Race $races): static
     {
-        if (!$this->races->contains($race)) {
-            $this->races->add($race);
-            $race->setEquipes($this);
-        }
-
-        return $this;
-    }
-
-    public function removeRace(Race $race): static
-    {
-        if ($this->races->removeElement($race)) {
-            // set the owning side to null (unless already changed)
-            if ($race->getEquipes() === $this) {
-                $race->setEquipes(null);
-            }
-        }
+        $this->races = $races;
 
         return $this;
     }
 
     /**
-     * @return Collection<int, Joueur>
+     * @return Collection<int, Championnat>
      */
-    public function getJoueurs(): Collection
+    public function getChampionnats(): Collection
     {
-        return $this->joueurs;
+        return $this->championnats;
     }
 
-    public function addJoueur(Joueur $joueur): static
+    public function addChampionnat(Championnat $championnat): static
     {
-        if (!$this->joueurs->contains($joueur)) {
-            $this->joueurs->add($joueur);
-            $joueur->addEquipe($this);
+        if (!$this->championnats->contains($championnat)) {
+            $this->championnats->add($championnat);
+            $championnat->addEquipe($this);
         }
 
         return $this;
     }
 
-    public function removeJoueur(Joueur $joueur): static
+    public function removeChampionnat(Championnat $championnat): static
     {
-        if ($this->joueurs->removeElement($joueur)) {
-            $joueur->removeEquipe($this);
+        if ($this->championnats->removeElement($championnat)) {
+            $championnat->removeEquipe($this);
         }
 
         return $this;
     }
-
 }

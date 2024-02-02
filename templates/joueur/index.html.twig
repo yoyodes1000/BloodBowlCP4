@@ -1,20 +1,55 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello JoueurController!{% endblock %}
+{% block title %}Joueur index{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h1>Joueur index</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NbMax</th>
+                <th>Poste</th>
+                <th>Cout</th>
+                <th>CompMvmt</th>
+                <th>CompForce</th>
+                <th>CompAgilite</th>
+                <th>CompPasse</th>
+                <th>CompArmure</th>
+                <th>Principale</th>
+                <th>Secondaire</th>
+                <th>Comp</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for joueur in joueurs %}
+            <tr>
+                <td>{{ joueur.id }}</td>
+                <td>{{ joueur.nbMax }}</td>
+                <td>{{ joueur.poste }}</td>
+                <td>{{ joueur.cout }}</td>
+                <td>{{ joueur.compMvmt }}</td>
+                <td>{{ joueur.compForce }}</td>
+                <td>{{ joueur.compAgilite }}</td>
+                <td>{{ joueur.compPasse }}</td>
+                <td>{{ joueur.compArmure }}</td>
+                <td>{{ joueur.principale }}</td>
+                <td>{{ joueur.secondaire }}</td>
+                <td>{{ joueur.comp }}</td>
+                <td>
+                    <a href="{{ path('app_joueur_show', {'id': joueur.id}) }}">show</a>
+                    <a href="{{ path('app_joueur_edit', {'id': joueur.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/yoyod/OneDrive/Bureau/BloodBowlCP4/src/Controller/JoueurController.php'|file_link(0) }}">src/Controller/JoueurController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/yoyod/OneDrive/Bureau/BloodBowlCP4/templates/joueur/index.html.twig'|file_link(0) }}">templates/joueur/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <a href="{{ path('app_joueur_new') }}">Create new</a>
 {% endblock %}

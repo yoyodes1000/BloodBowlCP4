@@ -23,7 +23,7 @@ input.form-control {
 
 button.btn_formulaire {
   margin: auto;
-  background-color: var(--color-four);
+  background-color: var(--color-three);
   background-image: url("../images/ball.png");
   background-size: contain;
   background-repeat: no-repeat;
@@ -31,9 +31,9 @@ button.btn_formulaire {
   border: none;
   font-weight: bold;
   font-size: large;
-  color: var(--color-one);
+  color: var(--color-three);
 
-  width: 200px; /* Largeur de votre image */
-  height: 100px; /* Hauteur de votre image */
+  width: 200px;
+  height: 100px;
   cursor: pointer;
 }

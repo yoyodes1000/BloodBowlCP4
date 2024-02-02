@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -30,12 +32,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $pseudo = null;
 
-    #[ORM\ManyToOne(inversedBy: 'users')]
-    private ?Equipe $equipes = null;
+    #[ORM\OneToMany(mappedBy: 'users', targetEntity: Equipe::class, cascade: ['persist', 'remove'])]
+    private Collection $equipes;
+
+    public function __construct()
+    {
+        $this->equipes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function setId(int $id): static
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getEmail(): ?string
@@ -115,14 +129,32 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getEquipes(): ?Equipe
+    /**
+     * @return Collection<int, Equipe>
+     */
+    public function getEquipes(): Collection
     {
         return $this->equipes;
     }
 
-    public function setEquipes(?Equipe $equipes): static
+    public function addEquipe(Equipe $equipe): static
     {
-        $this->equipes = $equipes;
+        if (!$this->equipes->contains($equipe)) {
+            $this->equipes->add($equipe);
+            $equipe->setUsers($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEquipe(Equipe $equipe): static
+    {
+        if ($this->equipes->removeElement($equipe)) {
+            // set the owning side to null (unless already changed)
+            if ($equipe->getUsers() === $this) {
+                $equipe->setUsers(null);
+            }
+        }
 
         return $this;
     }

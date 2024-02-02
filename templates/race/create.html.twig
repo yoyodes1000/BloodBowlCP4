@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création d'équipes{% endblock %}
+
+{% block body %}
+    <h1>Choisissez vos joueurs</h1>
+    <div class="en-tete">
+        <div class="nbMax">
+            <p class="player_p">NbMax</pclass>
+        </div>
+        <div class="poste">
+            <p class="player_p">Poste</p>
+        </div>
+        <div class="mvmt">
+            <p class="player_p">Mvmt</p>
+        </div>
+        <div class="fo">
+            <p class="player_p">Fo</p>
+        </div>
+        <div class="ag">
+            <p class="player_p">Ag</p>
+        </div>
+        <div class="passe">
+            <p class="player_p">Passe</p>
+        </div>
+        <div class="armure">
+            <p class="player_p">Armure</p>
+        </div>
+        <div class="competence">
+            <p class="player_p">Compétences</p>
+        </div>
+        <div class="principale">
+            <p class="player_p">Principale</p>
+        </div>
+        <div class="secondaire">
+            <p class="player_p">Secondaire</p>
+        </div>
+        <div class="cout">
+            <p class="player_p">Coût</p>
+        </div>
+        <div class="bouton_joueurs">
+            <p class="player_p">poste</p>
+        </div>
+    </div>
+    {% for joueur in races.joueurs %}
+    <div class="joueurs">
+        <div class="nbMax">
+            <p>{{ joueur.nbMax }}</p>
+        </div>
+        <div class="poste">
+            <p>{{ joueur.poste }}</p>
+        </div>
+        <div class="mvmt">
+            <p>{{ joueur.compMvmt }}</p>
+        </div>
+        <div class="fo">
+            <p>{{ joueur.compForce }}</p>
+        </div>
+        <div class="ag">
+            <p>{{ joueur.compAgilite }}</p>
+        </div>
+        <div class="passe">
+            <p>{{ joueur.compPasse }}</p>
+        </div>
+        <div class="armure">
+            <p>{{ joueur.compArmure }}</p>
+        </div>
+        <div class="competence">
+            <p>{{ joueur.comp }}</p>
+        </div>
+        <div class="principale">
+            <p>{{ joueur.principale }}</p>
+        </div>
+        <div class="secondaire">
+            <p>{{ joueur.secondaire }}</p>
+        </div>
+        <div class="cout">
+            <p>{{ joueur.cout }}</p>
+        </div>
+        <div class="bouton_joueurs">
+            <div class="bouton_ajouter">
+                <img class="joueur" src="{{ asset('images/enregistrer.png') }}">
+            </div>
+            {#<div class="bouton_effacer">
+                <img class="joueur"  src="{{ asset('images/effacer.png') }}">
+            </div>#}
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création d'équipes{% endblock %}
+
+{% block body %}
+    <h1>Choisissez une équipe</h1>
+    {% for race in races %}
+        <div class="liste_equipe">
+            <a href="{{ path('create', { id: race.id }) }}"><h2>{{ race.nom }}</h2></a>
+        </div>
+    {% endfor %}
+{% endblock %}

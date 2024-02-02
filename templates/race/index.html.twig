@@ -1,7 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RaceController!{% endblock %}
+{% block title %}Toutes les équipes{% endblock %}
 
 {% block body %}
-    <h1>ca marche??</h1>
+    <h1>Ma liste d'équipes</h1>
+    {% for race in races %}
+        <h2>{{ race.nom }}</h2>
+        <ul>
+            {% for equipe in race.equipes %}
+                <a href="{{ path('app_equipe_show', {id: equipe.id}) }}"><li>{{ equipe.nom }}</li></a>
+            {% endfor %}
+        </ul>
+    {% endfor %}
 {% endblock %}

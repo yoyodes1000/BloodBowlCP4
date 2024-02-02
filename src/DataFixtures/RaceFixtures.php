@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Race;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 ;
 
@@ -191,6 +192,7 @@ class RaceFixtures extends Fixture
             $race->setCheerleader($data['cheerleader']);
             $race->setAssistant($data['assistant']);
             $manager->persist($race);
+            $this->addReference('Race_' . $data['nom'], $race);
         }
 
         $manager->flush();

@@ -31,35 +31,26 @@ class Joueur
     #[ORM\Column]
     private ?int $compForce = null;
 
-    #[ORM\Column(length: 25)]
-    private ?string $compPasse = null;
-
-    #[ORM\Column(length: 25)]
-    private ?string $compArmure = null;
-
-    #[ORM\Column(length: 25)]
-    private ?string $principale = null;
-
-    #[ORM\Column(length: 25)]
-    private ?string $secondaire = null;
-
-    #[ORM\Column(length: 25)]
+    #[ORM\Column(length: 255)]
     private ?string $compAgilite = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $compPasse = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $compArmure = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $principale = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $secondaire = null;
+
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $competencePerso = null;
+    private ?string $comp = null;
 
-    #[ORM\ManyToMany(targetEntity: Equipe::class, inversedBy: 'joueurs')]
-    private Collection $equipes;
-
-    #[ORM\OneToMany(mappedBy: 'joueurs', targetEntity: Race::class)]
-    private Collection $races;
-
-    public function __construct()
-    {
-        $this->equipes = new ArrayCollection();
-        $this->races = new ArrayCollection();
-    }
+    #[ORM\ManyToOne(inversedBy: 'joueurs', cascade: ['persist', 'remove'])]
+    private ?Race $Races = null;
 
     public function getId(): ?int
     {
@@ -126,6 +117,18 @@ class Joueur
         return $this;
     }
 
+    public function getCompAgilite(): ?string
+    {
+        return $this->compAgilite;
+    }
+
+    public function setCompAgilite(string $compAgilite): static
+    {
+        $this->compAgilite = $compAgilite;
+
+        return $this;
+    }
+
     public function getCompPasse(): ?string
     {
         return $this->compPasse;
@@ -174,80 +177,26 @@ class Joueur
         return $this;
     }
 
-    public function getCompAgilite(): ?string
+    public function getComp(): ?string
     {
-        return $this->compAgilite;
+        return $this->comp;
     }
 
-    public function setCompAgilite(string $compAgilite): static
+    public function setComp(string $comp): static
     {
-        $this->compAgilite = $compAgilite;
+        $this->comp = $comp;
 
         return $this;
     }
 
-    public function getCompetencePerso(): ?string
+    public function getRaces(): ?Race
     {
-        return $this->competencePerso;
+        return $this->Races;
     }
 
-    public function setCompetencePerso(string $competencePerso): static
+    public function setRaces(?Race $Races): static
     {
-        $this->competencePerso = $competencePerso;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Equipe>
-     */
-    public function getEquipes(): Collection
-    {
-        return $this->equipes;
-    }
-
-    public function addEquipe(Equipe $equipe): static
-    {
-        if (!$this->equipes->contains($equipe)) {
-            $this->equipes->add($equipe);
-        }
-
-        return $this;
-    }
-
-    public function removeEquipe(Equipe $equipe): static
-    {
-        $this->equipes->removeElement($equipe);
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Race>
-     */
-    public function getRaces(): Collection
-    {
-        return $this->races;
-    }
-
-    public function addRace(Race $race): static
-    {
-        if (!$this->races->contains($race)) {
-            $this->races->add($race);
-            $race->setJoueurs($this);
-        }
-
-        return $this;
-    }
-
-    public function removeRace(Race $race): static
-    {
-        if ($this->races->removeElement($race)) {
-            // set the owning side to null (unless already changed)
-            if ($race->getJoueurs() === $this) {
-                $race->setJoueurs(null);
-            }
-        }
+        $this->Races = $Races;
 
         return $this;
     }

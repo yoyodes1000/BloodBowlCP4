@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création d'équipes{% endblock %}
+
+{% block body %}
+    <h1>Choisissez vos joueurs</h1>
+    <div class="en-tete">
+        <div class="nbMax">
+            <p>NbMax</p>
+        </div>
+        <div class="poste">
+            <p>Poste</p>
+        </div>
+        <div class="mvmt">
+            <p>Mvmt</p>
+        </div>
+        <div class="fo">
+            <p>Fo</p>
+        </div>
+        <div class="ag">
+            <p>Ag</p>
+        </div>
+        <div class="passe">
+            <p>Passe</p>
+        </div>
+        <div class="armure">
+            <p>Armure</p>
+        </div>
+        <div class="competence">
+            <p>Compétences</p>
+        </div>
+        <div class="principale">
+            <p>Principale</p>
+        </div>
+        <div class="secondaire">
+            <p>Secondaire</p>
+        </div>
+        <div class="cout">
+            <p>Coût</p>
+        </div>
+        <div class="bouton_joueurs">
+            <p>poste</p>
+        </div>
+    </div>
+    {% for joueur in races.joueurs %}
+        <div class="joueurs">
+            <div class="nbMax">
+                <p>{{ joueur.nbMax }}</p>
+            </div>
+            <div class="poste">
+                <p>{{ joueur.poste }}</p>
+            </div>
+            <div class="mvmt">
+                <p>{{ joueur.compMvmt }}</p>
+            </div>
+            <div class="fo">
+                <p>{{ joueur.compForce }}</p>
+            </div>
+            <div class="ag">
+                <p>{{ joueur.compAgilite }}</p>
+            </div>
+            <div class="passe">
+                <p>{{ joueur.compPasse }}</p>
+            </div>
+            <div class="armure">
+                <p>{{ joueur.compArmure }}</p>
+            </div>
+            <div class="competence">
+                <p>{{ joueur.comp }}</p>
+            </div>
+            <div class="principale">
+                <p>{{ joueur.principale }}</p>
+            </div>
+            <div class="secondaire">
+                <p>{{ joueur.secondaire }}</p>
+            </div>
+            <div class="cout">
+                <p>{{ joueur.cout }}</p>
+            </div>
+            <div class="bouton_joueurs">
+                <div class="bouton_ajouter">
+                    <a href="edit.html.twig"><img class="joueur" src="{{ asset('images/enregistrer.png') }}"></a>
+                </div>
+                <div class="bouton_effacer">
+                    <img class="joueur"  src="{{ asset('images/effacer.png') }}">
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+
+    {% for joueur in race.equipes %}
+    <h2>{{ joueur.name }}</h2>
+{% endblock %}

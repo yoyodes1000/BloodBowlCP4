@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\RaceRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: RaceRepository::class)]
@@ -31,11 +33,17 @@ class Race
     #[ORM\Column]
     private ?int $assistant = null;
 
-    #[ORM\ManyToOne(inversedBy: 'races')]
-    private ?Equipe $equipes = null;
+    #[ORM\OneToMany(mappedBy: 'races', targetEntity: Equipe::class, cascade: ['persist', 'remove'])]
+    private Collection $equipes;
 
-    #[ORM\ManyToOne(inversedBy: 'races')]
-    private ?Joueur $joueurs = null;
+    #[ORM\OneToMany(mappedBy: 'Races', targetEntity: Joueur::class, cascade: ['persist', 'remove'])]
+    private Collection $joueurs;
+
+    public function __construct()
+    {
+        $this->equipes = new ArrayCollection();
+        $this->joueurs = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -114,26 +122,62 @@ class Race
         return $this;
     }
 
-    public function getEquipes(): ?Equipe
+    /**
+     * @return Collection<int, Equipe>
+     */
+    public function getEquipes(): Collection
     {
         return $this->equipes;
     }
 
-    public function setEquipes(?Equipe $equipes): static
+    public function addEquipe(Equipe $equipe): static
     {
-        $this->equipes = $equipes;
+        if (!$this->equipes->contains($equipe)) {
+            $this->equipes->add($equipe);
+            $equipe->setRaces($this);
+        }
 
         return $this;
     }
 
-    public function getJoueurs(): ?Joueur
+    public function removeEquipe(Equipe $equipe): static
+    {
+        if ($this->equipes->removeElement($equipe)) {
+            // set the owning side to null (unless already changed)
+            if ($equipe->getRaces() === $this) {
+                $equipe->setRaces(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Joueur>
+     */
+    public function getJoueurs(): Collection
     {
         return $this->joueurs;
     }
 
-    public function setJoueurs(?Joueur $joueurs): static
+    public function addJoueur(Joueur $joueur): static
     {
-        $this->joueurs = $joueurs;
+        if (!$this->joueurs->contains($joueur)) {
+            $this->joueurs->add($joueur);
+            $joueur->setRaces($this);
+        }
+
+        return $this;
+    }
+
+    public function removeJoueur(Joueur $joueur): static
+    {
+        if ($this->joueurs->removeElement($joueur)) {
+            // set the owning side to null (unless already changed)
+            if ($joueur->getRaces() === $this) {
+                $joueur->setRaces(null);
+            }
+        }
 
         return $this;
     }

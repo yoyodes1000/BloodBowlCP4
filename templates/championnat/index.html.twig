@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tous les championnats{% endblock %}
+
+{% block body %}
+    <h1>Tous les championnats</h1>
+    <div class="creer_championnat">
+        <a href="{{ path('creer_championnat') }}">
+            <button class="btn_formulaire"  type="submit">Créer</button>
+        </a>
+    </div>
+    <ul>
+        {% for championnat in championnats %}
+            <li class="championnat">
+                <a href="{{ path('delete', { id: championnat.id }) }}">
+                    <img class="joueur" src="{{ asset('images/effacer.png') }}"> - {{ championnat.nom }} -
+                </a>
+                <a href="{{ path('afficher_championnat', { id: championnat.id }) }}">
+                    <button class="btn_formulaire" type="submit">Afficher</button>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
