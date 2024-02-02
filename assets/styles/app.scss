@@ -17,8 +17,8 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
-  background-color: var(--color-four);
-  color: var(--color-three);
+  background-color: var(--color-three);
+  color: var(--color-two);
 }
 
 span.name {
@@ -41,7 +41,7 @@ a.equipe {
 }
 
 span.equipe {
-  color: var(--color-three);
+  color: var(--color-one);
   padding: 10px;
 }
  div.liste_equipe {
@@ -51,10 +51,33 @@ span.equipe {
  }
  li.championnat a {
    font-size: 25px;
-   color: var(--color-three);
+   color: var(--color-two);
    text-decoration: none;
  }
 div.creer_championnat {
   display:flex;
   justify-content: center;
+}
+div.bouton_joueurs {
+  display: flex;
+  justify-content: space-between;
+}
+div.bouton_ajouter {
+  display: inline;
+  width: 45%;
+  height: auto;
+  margin: auto;
+}
+div.bouton_effacer {
+  display: inline;
+  width: 45%;
+  height: auto;
+  margin: auto;
+}
+img.joueur {
+  width: 30px;
+  height: auto;
+}
+p.player_p {
+  color: var(--color-three);
 }

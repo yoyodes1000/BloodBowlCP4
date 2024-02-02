@@ -49,7 +49,7 @@ class Joueur
     #[ORM\Column(type: Types::TEXT)]
     private ?string $comp = null;
 
-    #[ORM\ManyToOne(inversedBy: 'joueurs')]
+    #[ORM\ManyToOne(inversedBy: 'joueurs', cascade: ['persist', 'remove'])]
     private ?Race $Races = null;
 
     public function getId(): ?int

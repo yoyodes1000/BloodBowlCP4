@@ -18,7 +18,7 @@ class Championnat
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\ManyToMany(targetEntity: Equipe::class, inversedBy: 'championnats')]
+    #[ORM\ManyToMany(targetEntity: Equipe::class, inversedBy: 'championnats', cascade: ['persist', 'remove'])]
     private Collection $equipes;
 
     public function __construct()

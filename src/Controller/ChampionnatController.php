@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Championnat;
+use App\Entity\Equipe;
 use App\Form\ChampionnatType;
 use App\Repository\ChampionnatRepository;
 use App\Service\ChampionnatService;
@@ -15,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/championnat')]
 class ChampionnatController extends AbstractController
 {
-    #[Route('/', name: 'championnat')]
+    #[Route('/', name: 'championnat', methods: ['GET', 'POST'])]
     public function index(ChampionnatRepository $championnatRepository): Response
     {
         $championnats = $championnatRepository->findAll();
@@ -24,7 +25,7 @@ class ChampionnatController extends AbstractController
         ]);
     }
 
-    #[Route('/afficher_championnat/{id}', name: 'afficher_championnat')]
+    #[Route('/afficher_championnat/{id}', name: 'afficher_championnat', methods: ['GET', 'POST'])]
     public function affichageChampionnat(int $id, ChampionnatRepository $championnatRepository): Response
     {
         $championnats = $championnatRepository->findOneBy(['id' => $id]);
@@ -33,7 +34,7 @@ class ChampionnatController extends AbstractController
         ]);
     }
 
-    #[Route('/creer_championnat', name: 'creer_championnat')]
+    #[Route('/creer_championnat', name: 'creer_championnat', methods: ['GET', 'POST'])]
     public function creerChampionnat(Request $request, EntityManagerInterface $entityManager): Response
     {
         $championnats = new Championnat();
@@ -52,22 +53,40 @@ class ChampionnatController extends AbstractController
         ]);
     }
 
-    #[Route('/afficher_journee/{id}', name: 'journee')]
-    public function affichageJournée(int $id, ChampionnatRepository $championnatRepository, ChampionnatService $championnatService): Response
+    #[Route('/{id}', name: 'delete', methods: ['GET', 'POST'])]
+    public function delete(Request $request, Championnat $championnat, EntityManagerInterface $entityManager): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$championnat->getId(), $request->request->get('_token'))) {
+            $entityManager->remove($championnat);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('championnat', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/afficher_journee/{id}', name: 'journee', methods: ['GET', 'POST'])]
+    public function affichageJournée(int $id, ChampionnatRepository $championnatRepository, ChampionnatService $championnatService, EntityManagerInterface $entityManager): Response
     {
         $championnat = $championnatRepository->find($id);
-
         if (!$championnat) {
             throw $this->createNotFoundException('Championnat non trouvé');
         }
 
-        $equipes = $championnat->getEquipes();
-
+        $equipes = $championnat->getEquipes()->toArray();
         $calendrier = $championnatService->creerChampionnat((array)$equipes);
+            // Informer Doctrine des modifications apportées à l'objet championnat
+            $entityManager->persist($championnat);
 
-        $championnatService->afficherChampionnat($calendrier);
+            // Enregistrer les modifications en base de données
+            $entityManager->flush();
 
-        return $this->render('championnat/journée.html.twig', [
+            // Recréer le calendrier avec l'équipe "Exempte" ajoutée
+        $calendrier = $championnatService->creerChampionnat($championnat->getEquipes()->toArray());
+
+
+        //$championnatService->afficherChampionnat($calendrier);
+
+        return $this->render('championnat/journee.html.twig', [
             'championnat' => $championnat,
             'calendrier' => $calendrier,
         ]);

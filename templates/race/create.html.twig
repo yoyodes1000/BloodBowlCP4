@@ -6,40 +6,40 @@
     <h1>Choisissez vos joueurs</h1>
     <div class="en-tete">
         <div class="nbMax">
-            <p>NbMax</p>
+            <p class="player_p">NbMax</pclass>
         </div>
         <div class="poste">
-            <p>Poste</p>
+            <p class="player_p">Poste</p>
         </div>
         <div class="mvmt">
-            <p>Mvmt</p>
+            <p class="player_p">Mvmt</p>
         </div>
         <div class="fo">
-            <p>Fo</p>
+            <p class="player_p">Fo</p>
         </div>
         <div class="ag">
-            <p>Ag</p>
+            <p class="player_p">Ag</p>
         </div>
         <div class="passe">
-            <p>Passe</p>
+            <p class="player_p">Passe</p>
         </div>
         <div class="armure">
-            <p>Armure</p>
+            <p class="player_p">Armure</p>
         </div>
         <div class="competence">
-            <p>Compétences</p>
+            <p class="player_p">Compétences</p>
         </div>
         <div class="principale">
-            <p>Principale</p>
+            <p class="player_p">Principale</p>
         </div>
         <div class="secondaire">
-            <p>Secondaire</p>
+            <p class="player_p">Secondaire</p>
         </div>
         <div class="cout">
-            <p>Coût</p>
+            <p class="player_p">Coût</p>
         </div>
         <div class="bouton_joueurs">
-            <p>poste</p>
+            <p class="player_p">poste</p>
         </div>
     </div>
     {% for joueur in races.joueurs %}
@@ -78,7 +78,12 @@
             <p>{{ joueur.cout }}</p>
         </div>
         <div class="bouton_joueurs">
-            <p>poste</p>
+            <div class="bouton_ajouter">
+                <img class="joueur" src="{{ asset('images/enregistrer.png') }}">
+            </div>
+            {#<div class="bouton_effacer">
+                <img class="joueur"  src="{{ asset('images/effacer.png') }}">
+            </div>#}
         </div>
     </div>
     {% endfor %}

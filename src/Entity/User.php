@@ -32,7 +32,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $pseudo = null;
 
-    #[ORM\OneToMany(mappedBy: 'users', targetEntity: Equipe::class)]
+    #[ORM\OneToMany(mappedBy: 'users', targetEntity: Equipe::class, cascade: ['persist', 'remove'])]
     private Collection $equipes;
 
     public function __construct()
@@ -40,6 +40,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->equipes = new ArrayCollection();
     }
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function setId(int $id): static
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 
     public function getEmail(): ?string
     {

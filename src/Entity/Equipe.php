@@ -18,13 +18,13 @@ class Equipe
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\ManyToOne(inversedBy: 'equipes')]
+    #[ORM\ManyToOne(cascade: ['persist', 'remove'], inversedBy: 'equipes')]
     private ?User $users = null;
 
-    #[ORM\ManyToOne(inversedBy: 'equipes')]
+    #[ORM\ManyToOne(cascade: ['persist', 'remove'], inversedBy: 'equipes')]
     private ?Race $races = null;
 
-    #[ORM\ManyToMany(targetEntity: Championnat::class, mappedBy: 'equipes')]
+    #[ORM\ManyToMany(targetEntity: Championnat::class, mappedBy: 'equipes', cascade: ['persist', 'remove'])]
     private Collection $championnats;
 
     public function __construct()

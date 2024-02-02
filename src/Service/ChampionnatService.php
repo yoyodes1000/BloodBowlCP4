@@ -2,7 +2,8 @@
 
 namespace App\Service;
 
-use App\Entity\Race;
+use App\Entity\Equipe;
+use Doctrine\ORM\EntityManagerInterface;
 
 class ChampionnatService
 {
@@ -12,10 +13,10 @@ class ChampionnatService
         $calendrier = [];
 
         if ($nombreEquipes % 2 != 0) {
-            $equipes[] = "Exempte";
+            $exempte = new Equipe;
+            $equipes[] = $exempte->setNom('Exempte');
             $nombreEquipes +=1;
         }
-
         $nombreJournees = $nombreEquipes - 1;
 
         for ($journee = 1; $journee <= $nombreJournees; $journee++) {
@@ -24,18 +25,19 @@ class ChampionnatService
             for ($i = 0; $i < $nombreEquipes / 2; $i++) {
                 $equipe1 = $equipes[$i];
                 $equipe2 = $equipes[$nombreEquipes - 1 - $i];
-
-                if ($equipe1 != "Exempte" && $equipe2 != "Exempte") {
-                    $calendrier[$journee][] = "$equipe1 vs $equipe2";
+                if ($equipe1->getNom() != "Exempte" && $equipe2->getNom() != "Exempte") {
+                    $calendrier[$journee][] = $equipe1->getNom() . " vs " . $equipe2->getNom();
                 }
             }
-            array_splice($equipes, 1, 0, array_pop($equipes));
+            for ($j = 1; $j < count($equipes) -1; $j++) {
+                $tab[] = $equipes[$j]->getNom();
+            }
+            $tab[count($equipes) -1] = $equipes[0]->getNom();
         }
-
         return $calendrier;
     }
 
-    public function afficherChampionnat(array $calendrier): void
+    /*public function afficherChampionnat(array $calendrier): void
     {
         foreach ($calendrier as $journee => $matches) {
             echo "Journée $journee: " . PHP_EOL;
@@ -44,5 +46,5 @@ class ChampionnatService
             }
             echo "\n";
         }
-    }
+    }*/
 }

@@ -100,6 +100,11 @@ use Doctrine\Persistence\ObjectManager;
     public function load(ObjectManager $manager): void
     {
         $faker = \Faker\Factory::create();
+        $equipe = new Equipe();
+        $equipe->setNom('Exempte');
+        $equipe->setUsers($this->getReference('Coach_Morts_Vivants@mail.com'));
+        $equipe->setRaces($this->getReference('Race_Morts-Vivants'));
+        $manager->persist($equipe);
 
         foreach(self::EQUIPES as $data) {
         $equipe = new Equipe();

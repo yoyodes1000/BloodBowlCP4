@@ -18,7 +18,7 @@ class ChampionnatFixtures extends Fixture
         $championnat->setNom("Coupe du Chaos");
         $manager->persist($championnat);
         $manager->flush();
-        $nombreEquipes = rand(8, 15);
+        $nombreEquipes = rand(14, 18);
         for ($i = 0; $i < $nombreEquipes; $i++) {
             $equipe = new Equipe();
             $equipe->setNom("Equipe ". $faker->realText($faker->numberBetween(10, 22)));

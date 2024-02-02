@@ -10,7 +10,7 @@
         {% endfor %}
     </ul>
     <div class="creer_championnat">
-        {#<a href="{{ path('creer_championnat') }}">#}
+        <a href="{{ path('journee', { id: championnats.id }) }}">
             <button class="btn_formulaire"  type="submit">Afficher les journées</button>
         </a>
     </div>

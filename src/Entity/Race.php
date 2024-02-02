@@ -33,10 +33,10 @@ class Race
     #[ORM\Column]
     private ?int $assistant = null;
 
-    #[ORM\OneToMany(mappedBy: 'races', targetEntity: Equipe::class)]
+    #[ORM\OneToMany(mappedBy: 'races', targetEntity: Equipe::class, cascade: ['persist', 'remove'])]
     private Collection $equipes;
 
-    #[ORM\OneToMany(mappedBy: 'Races', targetEntity: Joueur::class)]
+    #[ORM\OneToMany(mappedBy: 'Races', targetEntity: Joueur::class, cascade: ['persist', 'remove'])]
     private Collection $joueurs;
 
     public function __construct()

@@ -8,7 +8,7 @@
         <h2>{{ race.nom }}</h2>
         <ul>
             {% for equipe in race.equipes %}
-                <li>{{ equipe.nom }}</li>
+                <a href="{{ path('app_equipe_show', {id: equipe.id}) }}"><li>{{ equipe.nom }}</li></a>
             {% endfor %}
         </ul>
     {% endfor %}

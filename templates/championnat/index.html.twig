@@ -12,7 +12,9 @@
     <ul>
         {% for championnat in championnats %}
             <li class="championnat">
-                {{ championnat.nom }} -
+                <a href="{{ path('delete', { id: championnat.id }) }}">
+                    <img class="joueur" src="{{ asset('images/effacer.png') }}"> - {{ championnat.nom }} -
+                </a>
                 <a href="{{ path('afficher_championnat', { id: championnat.id }) }}">
                     <button class="btn_formulaire" type="submit">Afficher</button>
                 </a>

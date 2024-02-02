@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Race{% endblock %}
+
+{% block body %}
+    <h1>Race</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ race.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ race.nom }}</td>
+            </tr>
+            <tr>
+                <th>Relance</th>
+                <td>{{ race.relance }}</td>
+            </tr>
+            <tr>
+                <th>Apothicaire</th>
+                <td>{{ race.apothicaire }}</td>
+            </tr>
+            <tr>
+                <th>Tresorerie</th>
+                <td>{{ race.tresorerie }}</td>
+            </tr>
+            <tr>
+                <th>Cheerleader</th>
+                <td>{{ race.cheerleader }}</td>
+            </tr>
+            <tr>
+                <th>Assistant</th>
+                <td>{{ race.assistant }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_race_controller2_index') }}">back to list</a>
+
+    <a href="{{ path('app_race_controller2_edit', {'id': race.id}) }}">edit</a>
+
+    {{ include('race_controller2/_delete_form.html.twig') }}
+{% endblock %}
