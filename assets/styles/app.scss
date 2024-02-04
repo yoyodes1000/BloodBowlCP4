@@ -44,16 +44,30 @@ span.equipe {
   color: var(--color-one);
   padding: 10px;
 }
- div.liste_equipe {
-   display: inline-block;
-   width: 20vw;
-   margin: 2vw;
- }
- li.championnat a {
-   font-size: 25px;
-   color: var(--color-two);
-   text-decoration: none;
- }
+
+div.liste_equipe {
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  width: 20vw;
+  margin: 2vw;
+}
+a.team_link {
+  font-size: 25px;
+  color: var(--color-two);
+  text-decoration: none;
+}
+a.team_link:hover {
+  color: var(--color-four);
+}
+ul li {
+  list-style-type: none;
+}
+li.championnat a.team_link {
+  font-size: 25px;
+  color: var(--color-two);
+  text-decoration: none;
+}
 div.creer_championnat {
   display:flex;
   justify-content: center;

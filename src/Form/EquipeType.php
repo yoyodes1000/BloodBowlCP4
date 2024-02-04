@@ -17,18 +17,18 @@ class EquipeType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('users', EntityType::class, [
+            /*->add('users', EntityType::class, [
                 'class' => User::class,
-'choice_label' => 'id',
-            ])
+                'choice_label' => 'id',
+            ])*/
             ->add('races', EntityType::class, [
                 'class' => Race::class,
-'choice_label' => 'id',
+                'choice_label' => 'nom',
             ])
             ->add('championnats', EntityType::class, [
                 'class' => Championnat::class,
-'choice_label' => 'id',
-'multiple' => true,
+                'choice_label' => 'nom',
+                'multiple' => true,
             ])
         ;
     }

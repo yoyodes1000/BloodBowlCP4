@@ -29,22 +29,29 @@ class ChampionnatService
                     $calendrier[$journee][] = $equipe1->getNom() . " vs " . $equipe2->getNom();
                 }
             }
-            for ($j = 1; $j < count($equipes) -1; $j++) {
-                $tab[] = $equipes[$j]->getNom();
+            for ($j = 1; $j <= count($equipes) -1; $j++) {
+                $tab[$j-1] = $equipes[$j];
             }
-            $tab[count($equipes) -1] = $equipes[0]->getNom();
+            $tab[count($equipes) -1] = $equipes[0];
+            $equipes = $tab;
         }
         return $calendrier;
     }
 
-    /*public function afficherChampionnat(array $calendrier): void
+    public function ajouterJoueur(int $cout, int $tresorerie): int
     {
-        foreach ($calendrier as $journee => $matches) {
-            echo "Journée $journee: " . PHP_EOL;
-            foreach ($matches as $match) {
-                echo $match . PHP_EOL;
-            }
-            echo "\n";
-        }
+        $tresorerie = $tresorerie - $cout;
+        return $tresorerie;
+    }
+
+    public function enleverJoueur(int $cout, int $tresorerie): int
+    {
+        $tresorerie = $tresorerie + $cout;
+        return $tresorerie;
+    }
+
+    /*public function competencePrimaire(string $principale): string
+    {
+
     }*/
 }

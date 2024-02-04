@@ -3,13 +3,22 @@
 {% block title %}Toutes les équipes{% endblock %}
 
 {% block body %}
-    <h1>Ma liste d'équipes</h1>
+    <h1>Mes équipes</h1>
+
     {% for race in races %}
-        <h2>{{ race.nom }}</h2>
-        <ul>
-            {% for equipe in race.equipes %}
-                <a href="{{ path('app_equipe_show', {id: equipe.id}) }}"><li>{{ equipe.nom }}</li></a>
-            {% endfor %}
-        </ul>
+        <div class="liste_equipe">
+                <img src="{{ asset('images/' ~ race.slug ~ '.png') }}" alt="{{ race.slug }}">
+            <h2>{{ race.nom }}</h2>
+
+            <ul class="team_link">
+                {% for equipe in race.equipes %}
+                    <li class="championnat">
+                        <a class="team_link" href="{{ path('app_equipe_show', {id: equipe.id}) }}">
+                            {{ equipe.nom }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     {% endfor %}
 {% endblock %}

@@ -55,9 +55,9 @@ class UserFixtures extends Fixture
             'password' => 'Halflings',
         ],
         [
-            'pseudo' => 'Humain',
-            'email' => 'Humain@mail.com',
-            'password' => 'Humain',
+            'pseudo' => 'Humains',
+            'email' => 'Humains@mail.com',
+            'password' => 'Humains',
         ],
         [
             'pseudo' => 'Noblesse Impériale',
@@ -70,9 +70,9 @@ class UserFixtures extends Fixture
             'password' => 'Hommes_Lezards',
         ],
         [
-            'pseudo' => 'Horreur Necromantiques',
-            'email' => 'Horreur_Necromantiques@mail.com',
-            'password' => 'Horreur_Necromantiques',
+            'pseudo' => 'Horreurs Necromantiques',
+            'email' => 'Horreurs_Necromantiques@mail.com',
+            'password' => 'Horreurs_Necromantiques',
         ],
         [
             'pseudo' => 'Nurgle',

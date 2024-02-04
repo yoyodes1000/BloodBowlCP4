@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Championnat;
-use App\Entity\Equipe;
 use App\Form\ChampionnatType;
 use App\Repository\ChampionnatRepository;
 use App\Service\ChampionnatService;
@@ -25,7 +24,7 @@ class ChampionnatController extends AbstractController
         ]);
     }
 
-    #[Route('/afficher_championnat/{id}', name: 'afficher_championnat', methods: ['GET', 'POST'])]
+    #[Route('/afficher/{id}', name: 'afficher_championnat', methods: ['GET', 'POST'])]
     public function affichageChampionnat(int $id, ChampionnatRepository $championnatRepository): Response
     {
         $championnats = $championnatRepository->findOneBy(['id' => $id]);
@@ -34,7 +33,7 @@ class ChampionnatController extends AbstractController
         ]);
     }
 
-    #[Route('/creer_championnat', name: 'creer_championnat', methods: ['GET', 'POST'])]
+    #[Route('/creer', name: 'creer_championnat', methods: ['GET', 'POST'])]
     public function creerChampionnat(Request $request, EntityManagerInterface $entityManager): Response
     {
         $championnats = new Championnat();
@@ -73,18 +72,8 @@ class ChampionnatController extends AbstractController
         }
 
         $equipes = $championnat->getEquipes()->toArray();
-        $calendrier = $championnatService->creerChampionnat((array)$equipes);
-            // Informer Doctrine des modifications apportées à l'objet championnat
-            $entityManager->persist($championnat);
 
-            // Enregistrer les modifications en base de données
-            $entityManager->flush();
-
-            // Recréer le calendrier avec l'équipe "Exempte" ajoutée
         $calendrier = $championnatService->creerChampionnat($championnat->getEquipes()->toArray());
-
-
-        //$championnatService->afficherChampionnat($calendrier);
 
         return $this->render('championnat/journee.html.twig', [
             'championnat' => $championnat,

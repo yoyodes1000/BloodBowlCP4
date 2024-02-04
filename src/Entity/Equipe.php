@@ -27,6 +27,9 @@ class Equipe
     #[ORM\ManyToMany(targetEntity: Championnat::class, mappedBy: 'equipes', cascade: ['persist', 'remove'])]
     private Collection $championnats;
 
+    #[ORM\Column(length: 255)]
+    private ?string $slug = null;
+
     public function __construct()
     {
         $this->joueurs = new ArrayCollection();
@@ -97,6 +100,18 @@ class Equipe
         if ($this->championnats->removeElement($championnat)) {
             $championnat->removeEquipe($this);
         }
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): static
+    {
+        $this->slug = $slug;
 
         return $this;
     }

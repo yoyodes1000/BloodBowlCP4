@@ -39,6 +39,9 @@ class Race
     #[ORM\OneToMany(mappedBy: 'Races', targetEntity: Joueur::class, cascade: ['persist', 'remove'])]
     private Collection $joueurs;
 
+    #[ORM\Column(length: 255)]
+    private ?string $slug = null;
+
     public function __construct()
     {
         $this->equipes = new ArrayCollection();
@@ -178,6 +181,18 @@ class Race
                 $joueur->setRaces(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): static
+    {
+        $this->slug = $slug;
 
         return $this;
     }

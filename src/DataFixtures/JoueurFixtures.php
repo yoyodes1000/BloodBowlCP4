@@ -648,7 +648,7 @@ class JoueurFixtures extends Fixture implements DependentFixtureInterface
             'competences' => '',
             'principale' => 'G',
             'secondaire' => 'AF',
-            'race' => 'Humain',
+            'race' => 'Humains',
         ],
         [
             'nb_max' => 2,
@@ -662,7 +662,7 @@ class JoueurFixtures extends Fixture implements DependentFixtureInterface
             'competences' => 'Passe, Prise Sûre',
             'principale' => 'GP',
             'secondaire' => 'AF',
-            'race' => 'Humain',
+            'race' => 'Humains',
         ],
         [
             'nb_max' => 4,
@@ -676,7 +676,7 @@ class JoueurFixtures extends Fixture implements DependentFixtureInterface
             'competences' => 'Réception, Esquive',
             'principale' => 'AG',
             'secondaire' => 'FP',
-            'race' => 'Humain',
+            'race' => 'Humains',
         ],
         [
             'nb_max' => 4,
@@ -690,7 +690,7 @@ class JoueurFixtures extends Fixture implements DependentFixtureInterface
             'competences' => 'Blocage',
             'principale' => 'GF',
             'secondaire' => 'AP',
-            'race' => 'Humain',
+            'race' => 'Humains',
         ],
         [
             'nb_max' => 3,
@@ -704,7 +704,7 @@ class JoueurFixtures extends Fixture implements DependentFixtureInterface
             'competences' => 'Esquive, Poids Plume, Minus',
             'principale' => 'A',
             'secondaire' => 'GF',
-            'race' => 'Humain',
+            'race' => 'Humains',
         ],
         [
             'nb_max' => 1,
@@ -718,7 +718,7 @@ class JoueurFixtures extends Fixture implements DependentFixtureInterface
             'competences' => 'Cerveau Lent, Solitaire (4+), Châtaigne (+1), Lancer de Coéquipier, Crâne Epais',
             'principale' => 'F',
             'secondaire' => 'AG',
-            'race' => 'Humain',
+            'race' => 'Humains',
         ],
         // Noblesse Impériale
         [
@@ -861,7 +861,7 @@ class JoueurFixtures extends Fixture implements DependentFixtureInterface
             'competences' => 'Régénération',
             'principale' => 'G',
             'secondaire' => 'AF',
-            'race' => 'Horreur Necromantiques',
+            'race' => 'Horreurs Necromantiques',
         ],
         [
             'nb_max' => 2,
@@ -875,7 +875,7 @@ class JoueurFixtures extends Fixture implements DependentFixtureInterface
             'competences' => 'Esquive',
             'principale' => 'AG',
             'secondaire' => 'PF',
-            'race' => 'Horreur Necromantiques',
+            'race' => 'Horreurs Necromantiques',
         ],
         [
             'nb_max' => 2,
@@ -889,7 +889,7 @@ class JoueurFixtures extends Fixture implements DependentFixtureInterface
             'competences' => 'Blocage, Répulsion, Sans les Mains, Régénération, Glissade Controlée',
             'principale' => 'GF',
             'secondaire' => 'A',
-            'race' => 'Horreur Necromantiques',
+            'race' => 'Horreurs Necromantiques',
         ],
         [
             'nb_max' => 2,
@@ -903,7 +903,7 @@ class JoueurFixtures extends Fixture implements DependentFixtureInterface
             'competences' => 'Griffes, Frénésie, Régénération',
             'principale' => 'AG',
             'secondaire' => 'PF',
-            'race' => 'Horreur Necromantiques',
+            'race' => 'Horreurs Necromantiques',
         ],
         [
             'nb_max' => 2,
@@ -917,7 +917,7 @@ class JoueurFixtures extends Fixture implements DependentFixtureInterface
             'competences' => 'Régénération, Stabilité, Crâne Epais',
             'principale' => 'GF',
             'secondaire' => 'A',
-            'race' => 'Horreur Necromantiques',
+            'race' => 'Horreurs Necromantiques',
         ],
         // Nurgle
         [

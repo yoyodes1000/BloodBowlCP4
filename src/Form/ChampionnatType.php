@@ -21,6 +21,7 @@ class ChampionnatType extends AbstractType
                 'choice_label' => 'nom',
                 'multiple' => true,
                 'expanded' => true,
+                'autocomplete' => true,
             ]);
     }
 

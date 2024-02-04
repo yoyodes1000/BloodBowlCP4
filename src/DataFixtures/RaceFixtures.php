@@ -6,6 +6,8 @@ use App\Entity\Race;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\String\Slugger\SluggerInterface;
+
 ;
 
 class RaceFixtures extends Fixture
@@ -76,7 +78,7 @@ class RaceFixtures extends Fixture
             'assistant' => 0
         ],
         [
-            'nom' => 'Humain',
+            'nom' => 'Humains',
             'relance' => 100000,
             'apothicaire' => 'OUI',
             'tresorerie' => 600000,
@@ -100,7 +102,7 @@ class RaceFixtures extends Fixture
             'assistant' => 0
         ],
         [
-            'nom' => 'Horreur Necromantiques',
+            'nom' => 'Horreurs Necromantiques',
             'relance' => 140000,
             'apothicaire' => 'NON',
             'tresorerie' => 600000,
@@ -180,6 +182,12 @@ class RaceFixtures extends Fixture
             'assistant' => 0
         ]
     ];
+    private SluggerInterface $slugger;
+
+    public function __construct(SluggerInterface $slugger)
+    {
+        $this->slugger = $slugger;
+    }
 
     public function load(ObjectManager $manager): void
     {
@@ -190,7 +198,10 @@ class RaceFixtures extends Fixture
             $race->setApothicaire($data['apothicaire']);
             $race->setTresorerie($data['tresorerie']);
             $race->setCheerleader($data['cheerleader']);
+            $slug = $this->slugger->slug($race->getNom());
+            $race->setSlug($slug);
             $race->setAssistant($data['assistant']);
+
             $manager->persist($race);
             $this->addReference('Race_' . $data['nom'], $race);
         }

@@ -6,7 +6,10 @@
     <h1>Choisissez une équipe</h1>
     {% for race in races %}
         <div class="liste_equipe">
-            <a href="{{ path('create', { id: race.id }) }}"><h2>{{ race.nom }}</h2></a>
+            <a href="{{ path('create', { id: race.id }) }}">
+                <img src="{{ asset('images/' ~ race.slug ~ '.png') }}" alt="{{ race.slug }}">
+            </a>
+            <h2>{{ race.nom }}</h2>
         </div>
     {% endfor %}
 {% endblock %}

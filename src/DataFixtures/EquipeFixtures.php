@@ -7,6 +7,8 @@ use App\Entity\Equipe;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\String\Slugger\SluggerInterface;
+
 ;
 
 #[AllowDynamicProperties] class EquipeFixtures extends Fixture implements DependentFixtureInterface
@@ -45,8 +47,8 @@ use Doctrine\Persistence\ObjectManager;
             'race' => 'Halflings',
         ],
         [
-            'user' => 'Humain@mail.com',
-            'race' => 'Humain',
+            'user' => 'Humains@mail.com',
+            'race' => 'Humains',
         ],
         [
             'user' => 'Noblesse_Imperiale@mail.com',
@@ -57,8 +59,8 @@ use Doctrine\Persistence\ObjectManager;
             'race' => 'Hommes Lézards',
         ],
         [
-            'user' => 'Horreur_Necromantiques@mail.com',
-            'race' => 'Horreur Necromantiques',
+            'user' => 'Horreurs_Necromantiques@mail.com',
+            'race' => 'Horreurs Necromantiques',
         ],
         [
             'user' => 'Nurgle@mail.com',
@@ -97,21 +99,34 @@ use Doctrine\Persistence\ObjectManager;
             'race' => 'Elfes Sylvains',
         ]
     ];
+    private SluggerInterface $slugger;
+
+    public function __construct(SluggerInterface $slugger)
+    {
+        $this->slugger = $slugger;
+    }
+
     public function load(ObjectManager $manager): void
     {
-        $faker = \Faker\Factory::create();
-        $equipe = new Equipe();
-        $equipe->setNom('Exempte');
-        $equipe->setUsers($this->getReference('Coach_Morts_Vivants@mail.com'));
-        $equipe->setRaces($this->getReference('Race_Morts-Vivants'));
-        $manager->persist($equipe);
 
+        $faker = \Faker\Factory::create();
         foreach(self::EQUIPES as $data) {
-        $equipe = new Equipe();
-        $equipe->setNom($faker->realTextBetween(10, 15));
-        $equipe->setUsers($this->getReference('Coach_' . $data['user']));
-        $equipe->setRaces($this->getReference('Race_' . $data['race']));
-        $manager->persist($equipe);
+            $equipe = new Equipe();
+            $equipe->setNom($data['race']);
+            $equipe->setUsers($this->getReference('Coach_' . $data['user']));
+            $equipe->setRaces($this->getReference('Race_' . $data['race']));
+            $slug = $this->slugger->slug($equipe->getNom());
+            $equipe->setSlug($slug);
+            $manager->persist($equipe);
+        }
+        foreach(self::EQUIPES as $data) {
+            $equipe = new Equipe();
+            $equipe->setNom($faker->realTextBetween(10, 15));
+            $equipe->setUsers($this->getReference('Coach_' . $data['user']));
+            $equipe->setRaces($this->getReference('Race_' . $data['race']));
+            $slug = $this->slugger->slug($equipe->getNom());
+            $equipe->setSlug($slug);
+            $manager->persist($equipe);
         }
 
         $manager->flush();
